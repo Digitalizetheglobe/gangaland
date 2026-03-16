@@ -1,0 +1,77 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { Phone, MessageCircle, Info, ArrowUp } from "lucide-react";
+import Link from "next/link";
+import { useScheduleModal } from "@/context/ModalContext";
+
+export default function FixedButtons() {
+  const [showBackToTop, setShowBackToTop] = useState(false);
+  const { openScheduleModal } = useScheduleModal();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowBackToTop(window.scrollY > 300);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  return (
+    <>
+      {/* Left side buttons */}
+      <div className="fixed left-0 bottom-6 z-50 flex -translate-y-1/2 flex-col gap-2">
+        <Link
+          href="https://wa.me/9876543210"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group flex w-12 items-center justify-start overflow-hidden rounded-r-lg bg-green-500 p-3 text-white shadow-lg transition-all duration-300 hover:w-36"
+        >
+          <MessageCircle className="h-6 w-6 shrink-0" />
+          <span className="ml-3 whitespace-nowrap text-sm font-medium opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+            WhatsApp
+          </span>
+        </Link>
+
+        <button
+          onClick={openScheduleModal}
+          className="group flex w-12 items-center justify-start overflow-hidden rounded-r-lg bg-[#2354A2] p-3 text-white shadow-lg transition-all duration-300 hover:w-40 cursor-pointer"
+        >
+          <Info className="h-6 w-6 shrink-0" />
+          <span className="ml-3 whitespace-nowrap text-sm font-medium opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+          Schedule a Visit
+          </span>
+        </button>
+      </div>
+
+      {/* Right side buttons */}
+      <div className="fixed right-0 bottom-16 z-50 flex -translate-y-1/2 flex-col gap-2">
+        <Link
+          href="tel:+91 9876543210"
+          className="group flex w-12 flex-row-reverse items-center justify-start overflow-hidden rounded-l-lg bg-[#FFD44F] p-3 text-black shadow-lg transition-all duration-300 hover:w-32"
+        >
+          <Phone className="h-6 w-6 shrink-0" />
+          <span className="mr-3 whitespace-nowrap text-sm font-bold opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+            Call Now
+          </span>
+        </Link>
+      </div>
+
+      {/* Back to top button (bottom right) */}
+      <button
+        onClick={scrollToTop}
+        className={`fixed bottom-6 right-6 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-black text-white shadow-lg transition-all duration-300 hover:bg-[#2354A2] cursor-pointer ${
+          showBackToTop ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0 pointer-events-none"
+        }`}
+        aria-label="Back to top"
+      >
+        <ArrowUp className="h-6 w-6" />
+      </button>
+    </>
+  );
+}

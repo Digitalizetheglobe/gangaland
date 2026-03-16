@@ -3,6 +3,13 @@ import Banner from "@/components/Banner";
 import Counter from "@/components/Counter";
 import Property from "@/components/Property";
 import Sports from "@/components/Sports";
+import Contact from "@/components/Contact";
+import Gallery from "@/components/Gallery";
+import Amenities from "@/components/Amenities";
+import Testimonial from "@/components/Testimonial";
+import School from "@/components/School";
+import Footer from "@/components/Footer";
+import LocationAndNearby from "@/components/locationandnearby";
 
 export default function Home() {
   return (
@@ -20,9 +27,16 @@ export default function Home() {
 
       <Header />
       <Banner />
-      <Counter/>
+      <Counter />
       <Property />
-      <Sports/>
+      <Sports />
+      <School />
+      <Gallery />
+      <Amenities />
+      <Testimonial />
+      <LocationAndNearby />
+      <Contact />
+      <Footer />
     </main>
   );
 }

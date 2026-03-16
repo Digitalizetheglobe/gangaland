@@ -1,6 +1,7 @@
 "use client"
 
 import CountUp from "react-countup"
+import { motion } from "framer-motion"
 
 const counters = [
   {
@@ -11,7 +12,7 @@ const counters = [
   {
     number: 9,
     label: "TOWERS DELIVERED",
-    unit:""
+    unit: ""
   },
   {
     number: 70,
@@ -21,28 +22,46 @@ const counters = [
   {
     number: 1200,
     label: "SPORTY FAMILIES",
-    unit:''
+    unit: "+"
   },
   {
     number: 30,
     label: "SPORTS TOWNSHIP",
-    unit:"ACRE"
+    unit: "ACRE"
   },
 ]
 
 export default function Counter() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { scale: 0, opacity: 0 },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+      },
+    },
+  };
+
   return (
     <section
-      className="relative w-full h-[400px] flex items-center justify-center text-white"
-      style={{
-        backgroundImage: "url('/images/bg.jpg')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
+      className="relative w-full min-h-[400px] py-20 flex items-center justify-center text-white overflow-hidden"
     >
-      
       {/* background image with light tint */}
-      <div
+      <motion.div
+        initial={{ scale: 1.1, opacity: 0 }}
+        whileInView={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 1.5 }}
         className="absolute inset-0 bg-[#ffffff]/60"
         style={{
           backgroundImage: "url('/images/sports-bg.png')",
@@ -52,32 +71,55 @@ export default function Counter() {
       />
 
       {/* dark overlay on top of background */}
-      <div className="absolute inset-0 bg-black/60" />
+      <div className="absolute inset-0 bg-black/70" />
 
       <div className="relative z-10 w-full px-6 md:px-10 text-center">
         {/* heading */}
-        <h2 className="text-4xl md:text-5xl lg:text-5xl font-extrabold mb-6 md:mb-10 tracking-tight">
-        The Stadium Life at a Glance
-        </h2>
+        <motion.h2 
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="font-raleway text-4xl md:text-5xl font-bold tracking-tight text-white mb-6 md:mb-10"
+        >
+          The Stadium Life at a Glance
+        </motion.h2>
 
         {/* counters row */}
-        <div className="max-w-7xl mx-auto flex flex-wrap md:flex-nowrap items-center justify-center md:justify-between">
-          {counters.map((item) => (
-            <div key={item.label} className="flex flex-col items-center">
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10 lg:gap-6 items-center place-items-center justify-between"
+        >
+          {counters.map((item, index) => (
+            <div 
+              key={item.label} 
+              className={`flex flex-col items-center ${
+                index === 4 ? "col-span-2 md:col-span-1 lg:col-span-1" : "col-span-1"
+              }`}
+            >
               {/* white translucent circle */}
-              <div className="w-40 h-40 md:w-40 md:h-40 rounded-full bg-white/40 backdrop-blur-md flex items-center justify-center mb-5 shadow-lg">
-                <span className="text-3xl lg:text-5xl font-bold text-white">
-                  <CountUp end={item.number} duration={3} /> <span className="text-[30px] my-auto">{item.unit}</span> 
+              <motion.div 
+                variants={itemVariants}
+                className="w-32 h-32 md:w-36 md:h-36 lg:w-40 lg:h-40 rounded-full bg-white/40 backdrop-blur-md flex items-center justify-center mb-4 md:mb-5 shadow-lg"
+              >
+                <span className="text-3xl md:text-4xl lg:text-5xl font-bold text-white">
+                  <CountUp end={item.number} duration={3} enableScrollSpy scrollSpyOnce /><span className="text-2xl md:text-[30px] my-auto">{item.unit}</span>
                 </span>
-              </div>
+              </motion.div>
 
               {/* label */}
-              <p className="text-[11px] md:text-md tracking-[0.35em] text-white font-bold uppercase">
+              <motion.p 
+                variants={itemVariants}
+                className="text-[10px] md:text-sm lg:text-[14px] xl:text-lg tracking-[0.2em] md:tracking-[0.35em] text-white font-bold uppercase text-center"
+              >
                 {item.label}
-              </p>
+              </motion.p>
             </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )
