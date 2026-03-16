@@ -41,11 +41,11 @@ export default function Testimonial() {
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#3A5D8F]">
             Testimonials
           </p>
-          <h2 className="font-raleway text-4xl md:text-5xl font-bold leading-tight tracking-tight text-[#12394C]">
+          <h2 className="font-raleway text-4xl md:text-5xl font-bold leading-tight tracking-tight text-[#3A5D8F]">
             Stories From Our{" "}
             <span className=" text-[#3A5D8F]">Residents</span>
           </h2>
-          <p className="mx-auto max-w-2xl text-sm leading-relaxed text-neutral-600 md:mx-0 md:text-base">
+          <p className="mx-auto max-w-2xl text-xl leading-relaxed text-neutral-600 md:mx-0 md:text-xl">
             Hear from families and residents who chose this address for its
             design, comfort, and community-first living experience.
           </p>

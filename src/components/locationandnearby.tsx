@@ -88,7 +88,7 @@ export default function LocationAndNearby() {
           <h2 className="font-raleway text-4xl md:text-5xl font-bold leading-tight tracking-tight text-white">
             Bavdhan: Where Pune Trains Its Future.
           </h2>
-          <p className="text-sm md:text-base leading-relaxed text-neutral-400 font-medium px-4">
+          <p className="text-xl md:text-xl leading-relaxed text-neutral-400 font-medium px-4">
             Strategically located in Bavdhan, Pune, Ganga Legends County offers the rare balance of seamless connectivity
             and a convenient daily routine. With quick access to Kothrud, Baner, and Hinjawadi and smooth connectivity to the
             Mumbai-Bangalore Highway, the city stays effortlessly within reach. Add to this proximity to supermarkets,

@@ -77,7 +77,7 @@ export default function Amenities() {
             Crafted Spaces For{" "}
             <span className=" text-[#FFD44F]">Everyday Luxury</span>
           </h2>
-          <p className="mx-auto max-w-2xl text-sm leading-relaxed text-neutral-400 md:mx-0 md:text-base">
+          <p className="mx-auto max-w-2xl text-xl leading-relaxed text-neutral-400 md:mx-0 md:text-xl">
             From wellness and recreation to social gatherings, every amenity is
             thoughtfully designed to elevate your lifestyle and create moments
             that feel extraordinary.

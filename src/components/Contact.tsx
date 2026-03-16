@@ -109,7 +109,7 @@ export default function Contact() {
             </h2>
           </div>
 
-          <p className="max-w-md text-base leading-relaxed text-neutral-300">
+          <p className="max-w-md text-xl leading-relaxed text-neutral-300">
             Share your details and our team will connect with you to walk you
             through floor plans, pricing, and exclusive offers tailored to your
             needs.

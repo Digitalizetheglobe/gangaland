@@ -65,7 +65,7 @@ export default function Banner() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className="max-w-md text-base leading-relaxed text-gray-400"
+            className="max-w-md text-xl leading-relaxed text-gray-400"
           >
             Welcome to the Ganga Legends, a premium residential located in the heart of the city.
           </motion.p>

@@ -39,7 +39,7 @@ export default function School() {
                         </span>
                     </h2>
 
-                    <p className="mx-auto max-w-8xl text-lg leading-relaxed font-light text-neutral-400 text-justify md:text-center">
+                    <p className="mx-auto max-w-8xl text-xl leading-relaxed font-light text-neutral-400 text-justify md:text-center">
                         At Ganga Legends County, education, sports, and care come together seamlessly, supported by <span className="text-white font-medium">GGIS</span>, an on-campus international school with a daycare facility. For families choosing <span className="text-white font-medium">premium 3 BHK</span> in Bavdhan, or <span className="text-[#FFD44F] font-medium">sports-centric 3.5 BHK flats</span> in Bavdhan, Ganga Legends County creates an environment where academics, physical training, and values grow side by side. With no daily commute, children gain more time to learn, play, and rest, while parents enjoy complete peace of mind knowing their child is always close and safe.
                     </p>
                 </motion.div>

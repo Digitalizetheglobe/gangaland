@@ -96,7 +96,7 @@ export default function Sports() {
                             Experience <br className="md:hidden" />
                             <span className="text-[#2354A2]">The Stadium Life</span>
                         </h2>
-                        <p className="mx-auto mt-6 max-w-3xl text-md md:text-base text-[#000000]/100">
+                        <p className="mx-auto mt-6 max-w-3xl text-xl md:text-xl text-[#000000]/100">
                             Here, sports aren’t boxed into a corner; they define the township. With 12.5 acres dedicated exclusively to sports, managed by the Ileseum Club, this is one of Pune’s most ambitious sports-first residential townships. Here, play isn’t occasional. It’s institutionalized.
                         </p>
                     </motion.div>
