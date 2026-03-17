@@ -4,31 +4,11 @@ import CountUp from "react-countup"
 import { motion } from "framer-motion"
 
 const counters = [
-  {
-    number: 14,
-    label: "PLANNED TOWERS",
-    unit: ""
-  },
-  {
-    number: 9,
-    label: "TOWERS DELIVERED",
-    unit: ""
-  },
-  {
-    number: 70,
-    label: "OPEN SPACE",
-    unit: "%"
-  },
-  {
-    number: 1200,
-    label: "SPORTY FAMILIES",
-    unit: "+"
-  },
-  {
-    number: 30,
-    label: "SPORTS TOWNSHIP",
-    unit: "ACRE"
-  },
+  { number: 14, label: "PLANNED TOWERS", unit: "" },
+  { number: 9, label: "TOWERS DELIVERED", unit: "" },
+  { number: 70, label: "OPEN SPACE", unit: "%" },
+  { number: 1200, label: "SPORTY FAMILIES", unit: "+" },
+  { number: 30, label: "SPORTS TOWNSHIP", unit: "ACRE" },
 ]
 
 export default function Counter() {
@@ -55,7 +35,7 @@ export default function Counter() {
 
   return (
     <section
-      className="relative w-full min-h-[400px] py-20 flex items-center justify-center text-white overflow-hidden"
+      className="relative w-full min-h-[400px] py-20 md:py-28 flex items-center justify-center text-white overflow-hidden"
     >
       {/* background image with light tint */}
       <motion.div
@@ -80,7 +60,7 @@ export default function Counter() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="font-raleway text-4xl md:text-5xl font-bold tracking-tight text-white mb-6 md:mb-10"
+          className="font-raleway text-3xl md:text-5xl font-bold tracking-tight text-white mb-8 md:mb-10"
         >
           The Stadium Life at a Glance
         </motion.h2>
@@ -91,22 +71,22 @@ export default function Counter() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10 lg:gap-6 items-center place-items-center justify-between"
+          className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-12 sm:gap-10 lg:gap-6 items-center place-items-center"
         >
           {counters.map((item, index) => (
             <div 
               key={item.label} 
               className={`flex flex-col items-center ${
-                index === 4 ? "col-span-2 md:col-span-1 lg:col-span-1" : "col-span-1"
+                index === 4 ? "sm:col-span-2 md:col-span-1 lg:col-span-1" : "col-span-1"
               }`}
             >
               {/* white translucent circle */}
               <motion.div 
                 variants={itemVariants}
-                className="w-32 h-32 md:w-36 md:h-36 lg:w-40 lg:h-40 rounded-full bg-white/40 backdrop-blur-md flex items-center justify-center mb-4 md:mb-5 shadow-lg"
+                className="w-28 h-28 sm:w-32 md:w-36 lg:w-40 lg:h-40 md:h-36 sm:h-32 rounded-full bg-white/30 backdrop-blur-md flex items-center justify-center mb-4 md:mb-5 shadow-lg border border-white/20"
               >
-                <span className="text-3xl md:text-4xl lg:text-5xl font-bold text-white">
-                  <CountUp end={item.number} duration={3} enableScrollSpy scrollSpyOnce /><span className="text-2xl md:text-[30px] my-auto">{item.unit}</span>
+                <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white">
+                  <CountUp end={item.number} duration={3} enableScrollSpy scrollSpyOnce /><span className="text-xl sm:text-2xl md:text-[30px] my-auto ml-0.5">{item.unit}</span>
                 </span>
               </motion.div>
 

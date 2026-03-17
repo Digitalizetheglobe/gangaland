@@ -1,9 +1,12 @@
 'use client';
 
 import { useState, type ChangeEvent, type FormEvent } from "react";
+import Link from "next/link";
 import { SITE_CONFIG } from "@/constants/siteConfig";
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin, Loader2, CheckCircle2, AlertCircle } from "lucide-react";
+import emailjs from "@emailjs/browser";
+import { EMAILJS_CONFIG } from "@/constants/emailjs";
 
 export default function Contact() {
   const [selectedUnit, setSelectedUnit] = useState("");
@@ -19,6 +22,9 @@ export default function Contact() {
     email?: string;
     phone?: string;
   }>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [submittedData, setSubmittedData] = useState<any>(null);
 
   const handleInputChange = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -65,16 +71,63 @@ export default function Contact() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!validate()) return;
 
-    // You can replace this with actual submit logic (API, etc.)
-    console.log("Form submitted", {
-      ...formValues,
-      selectedUnit,
-      priceRange,
-    });
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+
+    try {
+      const templateParams = {
+        name: formValues.name,
+        email: formValues.email,
+        phone: formValues.phone,
+        unit: selectedUnit || "Not Specified",
+        message: formValues.message,
+        site_name: SITE_CONFIG.name,
+        time: new Date().toLocaleString('en-IN', { 
+          dateStyle: 'medium', 
+          timeStyle: 'short' 
+        }),
+      };
+
+      await emailjs.send(
+        EMAILJS_CONFIG.SERVICE_ID,
+        EMAILJS_CONFIG.TEMPLATE_ID,
+        templateParams,
+        EMAILJS_CONFIG.PUBLIC_KEY
+      );
+
+      setSubmittedData({ 
+        ...formValues, 
+        unit: selectedUnit || "Not Specified",
+        submittedAt: new Date().toLocaleString('en-IN', { 
+          dateStyle: 'medium', 
+          timeStyle: 'short' 
+        })
+      });
+      setSubmitStatus("success");
+      
+      setFormValues({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+      });
+      setSelectedUnit("");
+      setPriceRange("");
+      
+      // Refresh the page after 5 seconds so they can see the summary first
+      setTimeout(() => {
+        window.location.reload();
+      }, 5000);
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -121,13 +174,13 @@ export default function Contact() {
                 Call Us
               </p>
               <a
-                href={`tel:+91 7026967026`}
+                href={`tel:${SITE_CONFIG.contact.phone}`}
                 className="inline-flex items-center gap-2 text-lg font-bold text-white hover:text-[#FFD44F]"
               >
                 <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/20 text-white">
                   <Phone className="h-4 w-4" />
                 </span>
-                <span>+91 7026967026</span>
+                <span>{SITE_CONFIG.contact.phone}</span>
               </a>
             </div>
 
@@ -160,7 +213,7 @@ export default function Contact() {
                   <MapPin className="h-4 w-4" />
                 </span>
                 <span className="max-w-xs text-base font-bold text-white group-hover:text-[#FFD44F]">
-                  Ganga Legends County, 18m. D.P. Road, Ram Nagar, Bavdhan, Off. Pashan, Pune.
+                  {SITE_CONFIG.address}
                 </span>
               </a>
             </div>
@@ -329,7 +382,11 @@ export default function Contact() {
                   className="mt-0.5 h-4 w-4 cursor-pointer rounded border-white/30 text-[#FFD44F] focus:ring-2 focus:ring-[#FFD44F] focus:ring-offset-0 bg-transparent"
                 />
                 <label htmlFor="consent" className="cursor-pointer leading-relaxed">
-                  I agree to the privacy policy of{" "}
+                  I agree to the{" "}
+                  <Link href="/privacy-policy" className="font-bold text-[#FFD44F] hover:underline">
+                    privacy policy
+                  </Link>{" "}
+                  of{" "}
                   <span className="font-bold text-white">
                     {SITE_CONFIG.name}
                   </span>{" "}
@@ -341,11 +398,70 @@ export default function Contact() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   type="submit"
-                  className="inline-flex h-12 items-center justify-center rounded-full bg-[#FFD44F] px-10 text-md font-bold cursor-pointer text-[#12394C] transition hover:bg-[#FFD44F]/80 active:translate-y-[1px] shadow-md shadow-[#FFD44F]/20"
+                  disabled={isSubmitting}
+                  className="inline-flex h-12 min-w-[140px] items-center justify-center rounded-full bg-[#FFD44F] px-10 text-md font-bold cursor-pointer text-[#12394C] transition hover:bg-[#FFD44F]/80 active:translate-y-[1px] shadow-md shadow-[#FFD44F]/20 disabled:opacity-70 disabled:cursor-not-allowed"
                 >
-                  Submit
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    "Submit"
+                  )}
                 </motion.button>
               </div>
+
+              {submitStatus === "success" && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="space-y-4 rounded-2xl bg-green-500/10 p-6 text-green-400 border border-green-500/30"
+                >
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="h-6 w-6" />
+                    <p className="text-lg font-bold">Successfully Submitted!</p>
+                  </div>
+                  
+                  <div className="grid gap-2 text-sm border-t border-green-500/20 pt-4 text-neutral-300">
+                    <div className="flex justify-between">
+                      <span className="font-semibold text-white">Name:</span>
+                      <span>{submittedData?.name}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="font-semibold text-white">Email:</span>
+                      <span>{submittedData?.email}</span>
+                    </div>
+                     <div className="flex justify-between">
+                      <span className="font-semibold text-white">Phone:</span>
+                      <span>{submittedData?.phone}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="font-semibold text-white">Unit Interested:</span>
+                      <span>{submittedData?.unit}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="font-semibold text-white">Submission Time:</span>
+                      <span>{submittedData?.submittedAt}</span>
+                    </div>
+                  </div>
+                  
+                  <p className="text-xs pt-2 italic text-neutral-400 text-right">
+                    We will connect with you shortly.
+                  </p>
+                </motion.div>
+              )}
+
+              {submitStatus === "error" && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="flex items-center gap-2 rounded-xl bg-red-500/20 p-4 text-red-400 border border-red-500/30"
+                >
+                  <AlertCircle className="h-5 w-5" />
+                  <p className="text-sm font-semibold">Something went wrong. Please try again later.</p>
+                </motion.div>
+              )}
             </form>
           </div>
         </motion.div>

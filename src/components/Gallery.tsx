@@ -6,13 +6,10 @@ import { ChevronLeft, ChevronRight, Plus, X } from 'lucide-react';
 import { motion, AnimatePresence } from "framer-motion";
 
 const GALLERY_IMAGES = [
-    '/images/gallery (1).jpg',
-    '/images/gallery (1).png',
-    // '/images/gallery (1).jpeg',
-    // '/images/gallery (2).jpeg',
-    '/images/gallery (2).jpg',
-    '/images/gallery (2).png',
-
+    '/images/gallery%20(1).jpg',
+    '/images/gallery%20(1).png',
+    '/images/gallery%20(2).jpg',
+    '/images/gallery%20(2).png',
 ];
 
 const GallerySection = () => {
@@ -40,7 +37,7 @@ const GallerySection = () => {
     const visibleItems = getVisibleImages();
 
     return (
-        <section id="gallery" className="w-full bg-gray-300 py-14 md:py-20 relative z-20 overflow-hidden">
+        <section id="gallery" className="w-full bg-gray-300 py-20 md:py-28 relative z-20 overflow-hidden">
             <div className="container mx-auto px-6 md:px-12 lg:px-24">
                 {/* Header */}
                 <motion.div 
@@ -60,43 +57,43 @@ const GallerySection = () => {
                             className="h-[2px] bg-[#3A5D8F]" 
                         />
                     </div>
-                    <h2 className="font-raleway text-4xl md:text-5xl font-bold leading-tight tracking-tight text-[#12394C]">
+                    <h2 className="font-raleway text-3xl md:text-5xl font-bold leading-tight tracking-tight text-[#2354A2] uppercase">
                         Gallery
                     </h2>
                 </motion.div>
 
                 {/* Carousel */}
-                <div className="relative flex items-center justify-center gap-4 md:gap-8 h-[300px] md:h-[500px]">
+                <div className="relative flex items-center justify-center md:gap-8 h-[400px] md:h-[500px]">
                     {/* Prev Button */}
                     <button
                         onClick={prevSlide}
-                        className="absolute cursor-pointer left-0 md:left-4 z-20 w-12 h-12 bg-[#3A5D8F] rounded-full flex items-center justify-center text-white shadow-lg hover:bg-[#2c476e] transition-colors"
+                        className="absolute cursor-pointer left-2 md:left-4 z-20 w-10 h-10 md:w-12 md:h-12 bg-[#3A5D8F] rounded-full flex items-center justify-center text-white shadow-lg hover:bg-[#2c476e] transition-colors"
                     >
-                        <ChevronLeft className="w-6 h-6" />
+                        <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
                     </button>
 
                     {/* Slides */}
-                    <div className="flex items-center justify-center w-full h-full gap-4 md:gap-8">
+                    <div className="flex items-center justify-center w-full h-full md:gap-8">
                         {visibleItems.map((item) => (
                             <motion.div
-                                layout
                                 key={`${item.index}-${item.type}`}
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 animate={{ opacity: item.type === 'current' ? 1 : 0.8, scale: item.type === 'current' ? 1 : 0.95 }}
                                 transition={{ duration: 0.5 }}
-                                className={`relative transition-all duration-500 ease-in-out
+                                className={`relative h-full transition-all duration-500 ease-in-out
                                     ${item.type === 'current'
-                                        ? 'w-[60%] md:w-[60%] h-full z-10 shadow-2xl group cursor-pointer'
-                                        : 'w-[20%] md:w-[20%] h-[80%] z-0 grayscale-[30%] hidden md:block'}
+                                        ? 'w-full md:w-[60%] z-10 shadow-2xl group cursor-pointer'
+                                        : 'w-0 md:w-[20%] h-[80%] z-0 grayscale-[30%] hidden md:block'}
                                 `}
                                 onClick={() => item.type === 'current' && setIsModalOpen(true)}
                             >
-                                <div className="relative w-full h-full overflow-hidden rounded-2xl">
+                                <div className="relative w-full h-full overflow-hidden rounded-2xl bg-neutral-800">
                                     <Image
                                         src={item.image}
                                         alt={`Gallery Image ${item.index + 1}`}
                                         fill
                                         className="object-cover"
+                                        sizes="(max-width: 768px) 100vw, 60vw"
                                     />
                                     {/* Hover Overlay */}
                                     {item.type === 'current' && (
@@ -114,9 +111,9 @@ const GallerySection = () => {
                     {/* Next Button */}
                     <button
                         onClick={nextSlide}
-                        className="absolute cursor-pointer right-0 md:right-4 z-20 w-12 h-12 bg-[#3A5D8F] rounded-full flex items-center justify-center text-white shadow-lg hover:bg-[#2c476e] transition-colors"
+                        className="absolute cursor-pointer right-2 md:right-4 z-20 w-10 h-10 md:w-12 md:h-12 bg-[#3A5D8F] rounded-full flex items-center justify-center text-white shadow-lg hover:bg-[#2c476e] transition-colors"
                     >
-                        <ChevronRight className="w-6 h-6" />
+                        <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
                     </button>
                 </div>
             </div>
@@ -133,9 +130,9 @@ const GallerySection = () => {
                     >
                         <button
                             onClick={() => setIsModalOpen(false)}
-                            className="absolute top-20 right-6 md:top-20 md:right-20 text-white hover:text-[#FFD44F] transition-colors z-[110] cursor-pointer p-2 bg-white/10 rounded-full hover:bg-white/20"
+                            className="absolute top-10 right-6 md:top-20 md:right-20 text-white hover:text-[#FFD44F] transition-colors z-[110] cursor-pointer p-2 bg-white/10 rounded-full hover:bg-white/20"
                         >
-                            <X className="w-8 h-8" />
+                            <X className="w-6 h-6 md:w-8 md:h-8" />
                         </button>
                         
                         <motion.div
@@ -143,7 +140,7 @@ const GallerySection = () => {
                             animate={{ scale: 1, opacity: 1 }}
                             exit={{ scale: 0.9, opacity: 0 }}
                             transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                            className="relative w-full max-w-5xl h-[70vh] md:h-[85vh] rounded-xl overflow-hidden shadow-2xl"
+                            className="relative w-full max-w-5xl h-[60vh] md:h-[85vh] rounded-xl overflow-hidden shadow-2xl"
                             onClick={(e) => e.stopPropagation()}
                         >
                             <Image

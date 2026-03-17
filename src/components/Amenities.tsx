@@ -90,7 +90,7 @@ export default function Amenities() {
             <button
               key={tab.key}
               onClick={() => setActiveTab(tab.key)}
-              className={`relative rounded-full px-6 py-2.5 text-sm font-semibold transition-all duration-300 ${
+              className={`cursor-pointer relative rounded-full px-6 py-2.5 text-sm font-semibold transition-all duration-300 ${
                 activeTab === tab.key 
                 ? "bg-[#FFD44F] text-neutral-900 shadow-lg shadow-[#FFD44F]/20" 
                 : "bg-white/5 text-neutral-400 hover:bg-white/10 hover:text-white"

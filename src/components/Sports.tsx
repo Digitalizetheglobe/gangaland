@@ -55,22 +55,22 @@ export default function Sports() {
             key={`${cat.name}-${index}`}
             variants={itemVariants}
             whileHover={{ scale: 1.05 }}
-            className="relative h-[240px] w-[240px] rounded-[28px] bg-[#2354A2]/100"
+            className="relative h-[200px] w-[200px] md:h-[240px] md:w-[240px] rounded-[24px] md:rounded-[28px] bg-[#2354A2]"
         >
             {/* vertical category label */}
-            <div className="absolute left-5 top-1/2 -translate-y-1/2">
-                <span className="block select-none text-black/50 font-extrabold text-xl tracking-tight [writing-mode:vertical-rl] rotate-180">
+            <div className="absolute left-4 md:left-5 top-1/2 -translate-y-1/2">
+                <span className="block select-none text-black/50 font-extrabold text-lg md:text-xl tracking-tight [writing-mode:vertical-rl] rotate-180">
                     {cat.name}
                 </span>
             </div>
 
             {/* athlete image */}
-            <div className="absolute inset-x-0 -top-10 h-full">
+            <div className="absolute inset-x-0 -top-8 md:-top-10 h-full">
                 <Image
                     src={cat.imageSrc || "/images/banner-left.png"}
                     alt={cat.imageAlt}
                     fill
-                    sizes="240px"
+                    sizes="(max-width: 768px) 200px, 240px"
                     className="object-contain object-bottom"
                     priority={false}
                 />
@@ -79,7 +79,7 @@ export default function Sports() {
     );
 
     return (
-        <section id="sports" className="w-full bg-gray-300 py-14 md:py-20 relative z-20 overflow-hidden">
+        <section id="sports" className="w-full bg-gray-300 py-20 md:py-28 relative z-20 overflow-hidden">
             <div className="mx-auto max-w-7xl px-6">
                 <div className="text-center">
                     <motion.div 
@@ -92,12 +92,12 @@ export default function Sports() {
                         <p className="text-xs font-bold uppercase tracking-[0.4em] text-[#12394C] mb-4">
                             Sports
                         </p>   
-                        <h2 className="font-raleway text-4xl md:text-5xl font-bold leading-tight tracking-tight text-[#2354A2]">
+                        <h2 className="font-raleway text-3xl md:text-5xl font-bold leading-tight tracking-tight text-[#2354A2] uppercase">
                             Experience <br className="md:hidden" />
                             <span className="text-[#2354A2]">The Stadium Life</span>
                         </h2>
-                        <p className="mx-auto mt-6 max-w-3xl text-xl md:text-xl text-[#000000]/100">
-                            Here, sports aren’t boxed into a corner; they define the township. With 12.5 acres dedicated exclusively to sports, managed by the Ileseum Club, this is one of Pune’s most ambitious sports-first residential townships. Here, play isn’t occasional. It’s institutionalized.
+                        <p className="mx-auto mt-6 max-w-3xl text-lg md:text-xl text-black/80 font-medium">
+                            Here, sports aren&apos;t boxed into a corner; they define the township. With 12.5 acres dedicated exclusively to sports, managed by the Ileseum Club, this is one of Pune’s most ambitious sports-first residential townships. Here, play isn’t occasional. It’s institutionalized.
                         </p>
                     </motion.div>
 
@@ -107,7 +107,7 @@ export default function Sports() {
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true, margin: "-100px" }}
-                        className="lg:hidden mt-10 grid grid-cols-1 sm:grid-cols-2 gap-12 sm:gap-16 justify-items-center"
+                        className="lg:hidden mt-12 grid grid-cols-1 sm:grid-cols-2 gap-14 sm:gap-16 justify-items-center"
                     >
                         {categories.map((cat, index) => renderCard(cat, index))}
                     </motion.div>

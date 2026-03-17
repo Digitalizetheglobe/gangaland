@@ -24,13 +24,13 @@ const TESTIMONIALS = [
 ];
 
 export default function Testimonial() {
-  // Duplicate testimonials for infinite loop
+
   const duplicatedTestimonials = [...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS];
 
   return (
-    <section id="testimonials" className="w-full bg-gray-300 py-14 md:py-20 relative z-20 overflow-hidden">
+    <section id="testimonials" className="w-full bg-gray-300 py-20 md:py-28 relative z-20 overflow-hidden">
       <div className="mx-auto max-w-7xl px-6">
-        {/* Heading */}
+        
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -51,7 +51,7 @@ export default function Testimonial() {
           </p>
         </motion.div>
 
-        {/* Scrolling Container */}
+      
         <div className="mt-12 overflow-hidden relative">
           <motion.div 
             animate={{ x: ["0%", "-50%"] }}
@@ -59,7 +59,7 @@ export default function Testimonial() {
               x: {
                 repeat: Infinity,
                 repeatType: "loop",
-                duration: 30, // Adjust speed here
+                duration: 30, 
                 ease: "linear",
               },
             }}
@@ -104,7 +104,6 @@ export default function Testimonial() {
             ))}
           </motion.div>
           
-          {/* Faded edges effect */}
           <div className="pointer-events-none absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-gray-300 to-transparent z-10" />
           <div className="pointer-events-none absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-gray-300 to-transparent z-10" />
         </div>

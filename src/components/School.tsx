@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export default function School() {
     return (
-        <section id="school" className="relative overflow-hidden bg-neutral-950 py-24 text-white md:py-32">
+        <section id="school" className="relative overflow-hidden bg-neutral-950 py-20 text-white md:py-28">
             {/* Background Atmosphere */}
             <motion.div 
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -22,7 +22,7 @@ export default function School() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
-                    className="mx-auto mb-20 max-w-4xl text-center space-y-8"
+                    className="mx-auto mb-12 md:mb-20 max-w-4xl text-center space-y-8"
                 >
                     <div className="flex items-center justify-center gap-4">
                         <span className="h-px w-10 bg-[#FFD44F]/40"></span>
@@ -32,14 +32,14 @@ export default function School() {
                         <span className="h-px w-10 bg-[#FFD44F]/40"></span>
                     </div>
 
-                    <h2 className="font-raleway text-4xl md:text-5xl font-bold leading-tight tracking-tight text-white text-center">
+                    <h2 className="font-raleway text-3xl md:text-5xl font-bold leading-tight tracking-tight text-white text-center uppercase">
                         GGIS: Education That Begins <br className="hidden md:block" />
                         <span className="bg-gradient-to-r from-[#FFD44F] via-[#FFE59E] to-[#FFD44F] bg-clip-text text-transparent">
                             At Your Doorstep
                         </span>
                     </h2>
 
-                    <p className="mx-auto max-w-8xl text-xl leading-relaxed font-light text-neutral-400 text-justify md:text-center">
+                    <p className="mx-auto max-w-8xl text-lg md:text-xl leading-relaxed font-light text-neutral-400 text-center">
                         At Ganga Legends County, education, sports, and care come together seamlessly, supported by <span className="text-white font-medium">GGIS</span>, an on-campus international school with a daycare facility. For families choosing <span className="text-white font-medium">premium 3 BHK</span> in Bavdhan, or <span className="text-[#FFD44F] font-medium">sports-centric 3.5 BHK flats</span> in Bavdhan, Ganga Legends County creates an environment where academics, physical training, and values grow side by side. With no daily commute, children gain more time to learn, play, and rest, while parents enjoy complete peace of mind knowing their child is always close and safe.
                     </p>
                 </motion.div>
@@ -53,7 +53,7 @@ export default function School() {
                     className=""
                 >
                     {/* Panel 1 */}
-                    <div className="group relative aspect-[21/9] overflow-hidden rounded-[2.5rem] border border-white/10 shadow-2xl transition-all duration-700 hover:-translate-y-2">
+                    <div className="group relative aspect-video md:aspect-[21/9] overflow-hidden rounded-3xl md:rounded-[2.5rem] border border-white/10 shadow-2xl transition-all duration-700 hover:-translate-y-2">
                         <div className="relative h-full w-full">
                             <Image
                                 src="/images/School.png"

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { NAV_LINKS } from "@/constants/navigation";
+import { SITE_CONFIG } from "@/constants/siteConfig";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
@@ -20,14 +21,13 @@ export default function Footer() {
                 alt="Ganga Legend Logo"
                 width={120}
                 height={60}
-                className="h-10 w-auto object-contain"
+                className="h-18 w-auto object-contain"
               />
             </Link>
             <p className="max-w-xs text-sm leading-relaxed text-white">
               Discover a stadium-sized lifestyle at Ganga Legends. Pune&apos;s most ambitious sports-first residential township, where everyday is a celebration of active living.
             </p>
-            <div className="flex items-center gap-4">
-              {/* Social Links */}
+            {/* <div className="flex items-center gap-4">
               {["facebook", "instagram", "youtube", "linkedin"].map((social) => (
                 <a
                   key={social}
@@ -45,20 +45,20 @@ export default function Footer() {
                   />
                 </a>
               ))}
-            </div>
+            </div> */}
           </div>
 
           {/* Quick Links */}
           <div className="space-y-6">
-            <h4 className="text-sm font-bold uppercase tracking-widest text-[#FFD44F]">
+            <h4 className="text-sm font-bold uppercase text-center tracking-widest text-[#FFD44F]">
               Quick Links
             </h4>
-            <nav className="flex flex-col gap-4">
+            <nav className="flex flex-col items-center gap-4">
               {NAV_LINKS.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-sm text-white transition hover:text-white"
+                  className="text-sm text-white transition hover:text-[#FFD44F]"
                 >
                   {link.label}
                 </Link>
@@ -73,28 +73,67 @@ export default function Footer() {
             </h4>
             <div className="grid gap-6 md:grid-cols-2">
               <div className="space-y-4">
-                <p className="flex items-start gap-3 text-sm text-white">
+                <a 
+                  href="https://maps.app.goo.gl/Qf22nwGyAKUiTNLV8" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="group flex items-start gap-3 text-sm text-white hover:text-[#FFD44F] transition-colors"
+                >
                   <span className="mt-1 text-[#FFD44F]">📍</span>
-                  Ganga Legends, Near Hyundai Showroom, Bavdhan, Pune, Maharashtra 411021
-                </p>
-                <p className="flex items-center gap-3 text-sm text-white">
+                  {SITE_CONFIG.address}
+                </a>
+                <a 
+                  href={`tel:${SITE_CONFIG.contact.phone}`} 
+                  className="group flex items-center gap-3 text-sm text-white hover:text-[#FFD44F] transition-colors"
+                >
                   <span className="text-[#FFD44F]">📞</span>
-                  +91 91122 33445
-                </p>
-                <p className="flex items-center gap-3 text-sm text-white">
+                  {SITE_CONFIG.contact.phone}
+                </a>
+                <a 
+                  href={`mailto:${SITE_CONFIG.contact.email}`} 
+                  className="group flex items-center gap-3 text-sm text-white hover:text-[#FFD44F] transition-colors"
+                >
                   <span className="text-[#FFD44F]">✉️</span>
-                  sales@gangalegends.com
-                </p>
+                  {SITE_CONFIG.contact.email}
+                </a>
               </div>
               <div className="space-y-4">
                 <p className="text-xs font-semibold uppercase tracking-widest text-white">
                   MahaRERA Registration
                 </p>
                 <p className="text-sm text-white">
-                  P52100021021 | P52100024316
+                  P52100076756 | P52100076968
                 </p>
-                <div className="h-12 w-32 rounded bg-white/5 flex items-center justify-center relative">
-                   <span className="text-[10px] text-white">RERA LOGO</span>
+                <div className="flex items-center gap-4">
+                  <a 
+                    href="https://maharera.mahaonline.gov.in/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="h-24 w-24 rounded bg-white flex items-center justify-center relative overflow-hidden hover:opacity-80 transition-opacity"
+                    title="View MahaRERA Registration"
+                  >
+                    <Image 
+                      src="/images/QR-code-one.png" 
+                      alt="MahaRERA QR Code 1" 
+                      fill 
+                      className="object-cover" 
+                    />
+                  </a>
+                  <a 
+                    href="https://maharera.mahaonline.gov.in/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="h-24 w-24 rounded bg-white flex items-center justify-center relative overflow-hidden hover:opacity-80 transition-opacity"
+                    title="View MahaRERA Registration"
+                  >
+                    {/* Replace the src below with your second QR code image */}
+                    <Image 
+                      src="/images/Qr-two.png" 
+                      alt="MahaRERA QR Code 2" 
+                      fill 
+                      className="object-cover" 
+                    />
+                  </a>
                 </div>
               </div>
             </div>
@@ -107,13 +146,11 @@ export default function Footer() {
             <p className="text-xs text-white">
               © {currentYear} Ganga Legends. All rights reserved. 
               <span className="mx-2">|</span>
-              <Link href="#privacy" className="hover:text-white transition">Privacy Policy</Link>
-              <span className="mx-2">|</span>
-              <Link href="#terms" className="hover:text-white transition">Terms & Conditions</Link>
+              <Link href="/privacy-policy" className="hover:text-[#FFD44F] transition">Privacy Policy</Link>
             </p>
-            <p className="text-[10px] uppercase tracking-widest text-white">
+            {/* <p className="text-[10px] uppercase tracking-widest text-white">
               Designed for a premium life
-            </p>
+            </p> */}
           </div>
         </div>
       </div>

@@ -70,7 +70,7 @@ export default function LocationAndNearby() {
   };
 
   return (
-    <section id="location" className="relative w-full overflow-hidden bg-neutral-950 py-20 text-white border-t border-white/5">
+    <section id="location" className="relative w-full overflow-hidden bg-neutral-950 py-20 md:py-28 text-neutral-800 border-t border-gray-400">
       <div className="container mx-auto px-6 md:px-12 lg:px-24">
         
         {/* Header Text */}
@@ -83,12 +83,12 @@ export default function LocationAndNearby() {
         >
           <div className="flex items-center justify-center gap-4 mb-4">
             <span className="text-[#FFD44F] font-bold uppercase tracking-widest text-sm">Location Advantages</span>
-            <div className="h-[2px] w-12 bg-[#FFD44F]"></div>
+            <div className="h-[2px] w-12 bg-[#3A5D8F]"></div>
           </div>
           <h2 className="font-raleway text-4xl md:text-5xl font-bold leading-tight tracking-tight text-white">
             Bavdhan: Where Pune Trains Its Future.
           </h2>
-          <p className="text-xl md:text-xl leading-relaxed text-neutral-400 font-medium px-4">
+          <p className="text-xl md:text-xl leading-relaxed text-gray-400 font-medium px-4">
             Strategically located in Bavdhan, Pune, Ganga Legends County offers the rare balance of seamless connectivity
             and a convenient daily routine. With quick access to Kothrud, Baner, and Hinjawadi and smooth connectivity to the
             Mumbai-Bangalore Highway, the city stays effortlessly within reach. Add to this proximity to supermarkets,
@@ -120,21 +120,21 @@ export default function LocationAndNearby() {
                     onClick={() => toggleSection(section.id)}
                     className={`group w-full flex items-center justify-between px-6 py-4 transition-all duration-300 border cursor-pointer
                       ${isOpen 
-                        ? 'bg-[#12394C] border-[#12394C] rounded-t-3xl rounded-b-none shadow-md' 
-                        : 'bg-white/20 border-white/10 rounded-full hover:border-[#3A5D8F] hover:bg-white/20'
+                        ? 'bg-white/10 border-white/20 rounded-t-3xl rounded-b-none shadow-xl' 
+                        : 'bg-white/5 border-white/10 rounded-full hover:border-[#3A5D8F] hover:bg-white/10'
                       }`}
                   >
                     <div className="flex items-center gap-4">
-                      <Icon className={`w-6 h-6 transition-colors ${isOpen ? 'text-[#FFD44F]' : 'text-neutral-400 group-hover:text-white'}`} />
-                      <span className={`font-bold tracking-wider uppercase text-sm transition-colors ${isOpen ? 'text-white' : 'text-neutral-400 group-hover:text-white'}`}>
+                      <Icon className={`w-6 h-6 transition-colors ${isOpen ? 'text-[#FFD44F]' : 'text-[#3A5D8F] group-hover:text-white'}`} />
+                      <span className={`font-bold tracking-wider uppercase text-sm transition-colors ${isOpen ? 'text-white' : 'text-gray-400 group-hover:text-white'}`}>
                         {section.title}
                       </span>
                     </div>
                     <div>
                       {isOpen ? (
-                        <ChevronUp className="w-5 h-5 text-white/70" />
+                        <ChevronUp className="w-5 h-5 text-white" />
                       ) : (
-                        <ChevronDown className="w-5 h-5 text-neutral-500 group-hover:text-white" />
+                        <ChevronDown className="w-5 h-5 text-gray-500 group-hover:text-white" />
                       )}
                     </div>
                   </button>
@@ -147,13 +147,13 @@ export default function LocationAndNearby() {
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.3 }}
-                        className="overflow-hidden bg-[#fafafa]/5 rounded-b-3xl border-x border-b border-white/10 backdrop-blur-sm"
+                        className="overflow-hidden bg-white/5 rounded-b-3xl border-x border-b border-white/20 backdrop-blur-sm"
                       >
                         <ul className="px-10 py-6 space-y-4">
                           {section.items.map((item, i) => (
-                            <li key={i} className="flex items-start text-sm md:text-base font-medium text-neutral-300">
+                            <li key={i} className="flex items-start text-sm md:text-base font-medium text-gray-300">
                               <span className="mr-3 mt-1.5 h-1.5 w-1.5 rounded-full bg-[#FFD44F] shrink-0" />
-                              <span className="leading-snug">{item.name} - <span className="text-white font-bold">{item.time}</span></span>
+                              <span className="leading-snug">{item.name} - <span className="text-[#FFD44F] font-bold">{item.time}</span></span>
                             </li>
                           ))}
                         </ul>
@@ -171,7 +171,7 @@ export default function LocationAndNearby() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="w-full h-[400px] lg:h-full min-h-[400px] rounded-3xl overflow-hidden shadow-2xl border border-white/10 bg-black/20"
+            className="w-full h-[400px] lg:h-full min-h-[400px] rounded-3xl overflow-hidden shadow-2xl border border-white/10 bg-neutral-900"
           >
             <iframe 
               src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3783.145232811096!2d73.775263!3d18.522338!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2be5f526bb13f%3A0xd00deb69a06a5a07!2sGanga%20Legends%20County!5e0!3m2!1sen!2sin!4v1773647605997!5m2!1sen!2sin" 
