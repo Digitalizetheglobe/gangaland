@@ -50,10 +50,10 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div className="space-y-6">
-            <h4 className="text-sm font-bold uppercase text-center tracking-widest text-[#FFD44F]">
+            <h4 className="text-sm font-bold uppercase tracking-widest text-[#FFD44F]">
               Quick Links
             </h4>
-            <nav className="flex flex-col items-center gap-4">
+            <nav className="flex flex-col items-start gap-4">
               {NAV_LINKS.map((link) => (
                 <Link
                   key={link.href}

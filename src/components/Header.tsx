@@ -87,7 +87,7 @@ export default function Header() {
             transition={{ duration: 0.4 }}
             className="absolute top-4 md:top-6 left-0 right-0 z-20 flex justify-center px-4"
           >
-            <div className="flex w-full max-w-7xl items-center justify-between rounded-full bg-black/30 pl-4 md:pl-5 pr-4 md:pr-6 py-2 md:py-3 shadow-lg shadow-black/10 backdrop-blur">
+            <div className="flex w-full max-w-7xl items-center justify-between rounded-full bg-white/60 pl-4 md:pl-5 pr-4 md:pr-6 py-2 md:py-3 shadow-lg shadow-black/10 backdrop-blur">
               <Link href="/" className="flex items-center gap-4 md:gap-5">
                 <Image
                   src="/images/logo.png"
@@ -98,7 +98,7 @@ export default function Header() {
                 />
               </Link>
 
-              <nav className="hidden items-center gap-10 text-md font-semibold text-white md:flex">
+              <nav className="hidden items-center gap-10 text-md font-semibold text-black md:flex">
                 {NAV_LINKS.map((link) => (
                   <button
                     key={link.href}
@@ -121,7 +121,7 @@ export default function Header() {
                 </button>
                 <button
                   onClick={() => setIsMobileMenuOpen(true)}
-                  className="block md:hidden p-1.5 text-white hover:text-[#FFD44F]"
+                  className="block md:hidden p-1.5 text-black hover:text-[#FFD44F]"
                 >
                   <Menu className="h-6 w-6" />
                 </button>

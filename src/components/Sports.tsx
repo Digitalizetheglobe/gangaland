@@ -10,7 +10,7 @@ type CategoryCard = {
 }
 
 const categories: CategoryCard[] = [
-    { name: "Cricket academy", imageSrc: "/images/Cricket.png", imageAlt: "Cricket" },
+    { name: "Cricket academy", imageSrc: "/images/Cricket1.png", imageAlt: "Cricket" },
     { name: "Football academy", imageSrc: "/images/Football.png", imageAlt: "Football" },
     { name: "Tennis academy", imageSrc: "/images/tennis.png", imageAlt: "Tennis" },
     { name: "Badminton academy", imageSrc: "/images/badminton.png", imageAlt: "Badminton" },
@@ -65,7 +65,7 @@ export default function Sports() {
             </div>
 
             {/* athlete image */}
-            <div className="absolute inset-x-0 -top-8 md:-top-10 h-full">
+            <div className="absolute inset-x-0 -top-8 md:-top-10 hover:scale-110 transition-all duration-300 ease-in-out h-full">
                 <Image
                     src={cat.imageSrc || "/images/banner-left.png"}
                     alt={cat.imageAlt}

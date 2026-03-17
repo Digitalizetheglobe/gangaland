@@ -143,7 +143,7 @@ export default function Contact() {
       {/* Dark overlay for contrast */}
       <div className="absolute inset-0 bg-neutral-950/80 backdrop-blur-sm"></div>
 
-      <div className="mx-auto flex max-w-6xl flex-col gap-14 px-6 lg:flex-row lg:items-start relative z-10">
+      <div className="mx-auto flex max-w-6xl flex-col gap-10 px-6 lg:flex-row lg:items-start lg:gap-14 relative z-10">
         {/* Left: Text + contact details */}
         <motion.div 
           initial={{ opacity: 0, x: -50 }}
@@ -156,19 +156,19 @@ export default function Contact() {
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#FFD44F]">
               Contact Us
             </p>
-            <h2 className="font-raleway text-4xl md:text-5xl font-bold leading-tight tracking-tight text-white">
+            <h2 className="font-raleway text-3xl md:text-5xl font-bold leading-tight tracking-tight text-white">
               Let&apos;s Talk About <br />
               <span className="text-[#FFD44F]">Your New Home</span>
             </h2>
           </div>
 
-          <p className="max-w-md text-xl leading-relaxed text-neutral-300">
+          <p className="max-w-md text-lg md:text-xl leading-relaxed text-neutral-300">
             Share your details and our team will connect with you to walk you
             through floor plans, pricing, and exclusive offers tailored to your
             needs.
           </p>
 
-          <div className="space-y-6 rounded-3xl bg-white/10 p-6 ring-1 ring-white/20 backdrop-blur-md shadow-xl">
+          <div className="space-y-6 rounded-3xl bg-white/10 p-5 md:p-6 ring-1 ring-white/20 backdrop-blur-md shadow-xl">
             <div className="space-y-2">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-400">
                 Call Us
@@ -228,7 +228,7 @@ export default function Contact() {
           transition={{ duration: 0.8 }}
           className="w-full lg:w-[55%]"
         >
-          <div className="rounded-3xl bg-white/10 p-6 shadow-2xl ring-1 ring-white/20 backdrop-blur-md md:p-8">
+          <div className="rounded-3xl bg-white/10 p-5 shadow-2xl ring-1 ring-white/20 backdrop-blur-md md:p-8">
             <div className="mb-6 flex items-center justify-between gap-4">
               <div className="space-y-1">
                 <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#FFD44F]">
@@ -383,7 +383,7 @@ export default function Contact() {
                 />
                 <label htmlFor="consent" className="cursor-pointer leading-relaxed">
                   I agree to the{" "}
-                  <Link href="/privacy-policy" className="font-bold text-[#FFD44F] hover:underline">
+                  <Link href="/privacy-policy" className="font-bold text-[#FFD44F] hover:[#FFD44F]/80">
                     privacy policy
                   </Link>{" "}
                   of{" "}

@@ -204,9 +204,9 @@ const FloorPlans = () => {
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             onClick={openScheduleModal}
-                            className="w-full sm:w-auto bg-[#FFD44F] hover:bg-[#FFD44F]/80 text-black cursor-pointer font-bold py-3 px-6 rounded-full text-lg shadow-2xl transition-all uppercase tracking-widest border border-white/10"
+                            className="w-full sm:w-auto bg-[#FFD44F] hover:bg-[#FFD44F]/80 text-black cursor-pointer font-bold py-3 px-6 rounded-full text-lg shadow-2xl transition-all tracking-widest border border-white/10"
                         >
-                            Enquire About This Plan
+                            More Details
                         </motion.button>
                     </motion.div>
                 </div>

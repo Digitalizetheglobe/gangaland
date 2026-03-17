@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Phone, MessageCircle, Info, ArrowUp } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { useScheduleModal } from "@/context/ModalContext";
 
 export default function FixedButtons() {
@@ -30,9 +31,15 @@ export default function FixedButtons() {
           href="https://wa.me/+917026967026"
           target="_blank"
           rel="noopener noreferrer"
-          className="group flex w-12 items-center justify-start overflow-hidden rounded-r-lg bg-green-500 p-3 text-white shadow-lg transition-all duration-300 hover:w-36"
+          className="group flex w-12 items-center justify-start overflow-hidden rounded-r-lg bg-green-500 p-2 text-white shadow-lg transition-all duration-300 hover:w-36"
         >
-          <MessageCircle className="h-6 w-6 shrink-0" />
+          <Image 
+            src="/images/whatsapp.png" 
+            alt="WhatsApp" 
+            width={32} 
+            height={32} 
+            className="shrink-0"
+          />
           <span className="ml-3 whitespace-nowrap text-sm font-medium opacity-0 transition-opacity duration-300 group-hover:opacity-100">
             WhatsApp
           </span>

@@ -147,7 +147,7 @@ export default function Banner() {
             <div className="w-full pt-2">
               <button 
                 onClick={openScheduleModal}
-                className="w-full cursor-pointer rounded-full border border-white/20 bg-white/5 px-4 py-2.5 text-md font-semibold text-white transition hover:border-[#FFD44F] hover:bg-[#FFD44F] hover:text-black"
+                className="w-full cursor-pointer rounded-full bg-[#FFD44F] px-2 py-2 text-md font-bold text-black transition hover:bg-[#FFD44F]/80"
               >
                 Get Floor Plans
               </button>
@@ -242,7 +242,7 @@ export default function Banner() {
             <div className="w-full pt-1">
               <button 
                 onClick={openScheduleModal}
-                className="w-full cursor-pointer rounded-full border border-white/20 bg-white/5 px-4 py-2 text-[10px] font-semibold text-white transition hover:border-[#FFD44F] hover:bg-[#FFD44F] hover:text-black"
+                className="w-full cursor-pointer rounded-full bg-[#FFD44F] px-4 py-2 text-[10px] font-bold text-black transition hover:bg-[#FFD44F]/80"
               >
                 Get Floor Plans
               </button>
