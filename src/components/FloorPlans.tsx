@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Maximize2, X, Ruler, BedDouble, Bath, Square } from 'lucide-react';
+import { Maximize2, X, Ruler, BedDouble, Bath, Square, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useScheduleModal } from "@/context/ModalContext";
 
 const FLOOR_PLANS = [
@@ -65,6 +65,31 @@ const FloorPlans = () => {
     const { openScheduleModal } = useScheduleModal();
 
     const activePlan = FLOOR_PLANS.find(plan => plan.id === activeTab) || FLOOR_PLANS[0];
+
+    const currentIdx = FLOOR_PLANS.findIndex(plan => plan.id === activeTab);
+
+    const handleNext = (e?: React.MouseEvent) => {
+        e?.stopPropagation();
+        const nextIdx = (currentIdx + 1) % FLOOR_PLANS.length;
+        setActiveTab(FLOOR_PLANS[nextIdx].id);
+    };
+
+    const handlePrev = (e?: React.MouseEvent) => {
+        e?.stopPropagation();
+        const prevIdx = (currentIdx - 1 + FLOOR_PLANS.length) % FLOOR_PLANS.length;
+        setActiveTab(FLOOR_PLANS[prevIdx].id);
+    };
+
+    React.useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (!isLightboxOpen) return;
+            if (e.key === 'ArrowRight') handleNext();
+            if (e.key === 'ArrowLeft') handlePrev();
+            if (e.key === 'Escape') setIsLightboxOpen(false);
+        };
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, [isLightboxOpen, currentIdx]);
 
     return (
         <section id="floor-plans" className="w-full bg-gray-300 py-20 md:py-28 relative overflow-hidden">
@@ -229,21 +254,41 @@ const FloorPlans = () => {
                         </button>
 
                         <motion.div
+                            key={activeTab}
                             initial={{ scale: 0.9, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
                             exit={{ scale: 0.9, opacity: 0 }}
                             transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                            className="relative w-full max-w-7xl h-[80vh] bg-white rounded-3xl overflow-hidden shadow-2xl p-4 md:p-8"
+                            className="relative w-full max-w-7xl h-[80vh] bg-white rounded-3xl overflow-hidden shadow-2xl p-4 md:p-8 flex items-center justify-center"
                             onClick={(e) => e.stopPropagation()}
                         >
-                            <Image
-                                src={activePlan.image}
-                                alt="Full Floor Plan"
-                                fill
-                                className="object-contain p-8"
-                                quality={100}
-                                priority
-                            />
+                            {/* Navigation Arrows */}
+                            <button
+                                onClick={handlePrev}
+                                className="absolute left-4 md:left-8 z-[120] text-[#3A5D8F] hover:text-[#2354A2] transition-colors cursor-pointer p-2 md:p-4 bg-gray-100/80 rounded-full hover:bg-white shadow-lg border border-gray-200"
+                                aria-label="Previous image"
+                            >
+                                <ChevronLeft className="w-6 h-6 md:w-8 md:h-8" />
+                            </button>
+
+                            <div className="relative w-full h-full">
+                                <Image
+                                    src={activePlan.image}
+                                    alt="Full Floor Plan"
+                                    fill
+                                    className="object-contain p-8"
+                                    quality={100}
+                                    priority
+                                />
+                            </div>
+
+                            <button
+                                onClick={handleNext}
+                                className="absolute right-4 md:right-8 z-[120] text-[#3A5D8F] hover:text-[#2354A2] transition-colors cursor-pointer p-2 md:p-4 bg-gray-100/80 rounded-full hover:bg-white shadow-lg border border-gray-200"
+                                aria-label="Next image"
+                            >
+                                <ChevronRight className="w-6 h-6 md:w-8 md:h-8" />
+                            </button>
                         </motion.div>
                     </motion.div>
                 )}

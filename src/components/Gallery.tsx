@@ -135,6 +135,17 @@ const GallerySection = () => {
                             <X className="w-6 h-6 md:w-8 md:h-8" />
                         </button>
                         
+                        {/* Navigation Arrows */}
+                        <button
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                prevSlide();
+                            }}
+                            className="absolute left-4 md:left-10 text-white/70 hover:text-white transition-colors z-[110] cursor-pointer p-2 md:p-3 bg-white/5 md:bg-white/10 rounded-full hover:bg-white/20"
+                        >
+                            <ChevronLeft className="w-8 h-8 md:w-10 md:h-10" />
+                        </button>
+
                         <motion.div
                             initial={{ scale: 0.9, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
@@ -143,15 +154,34 @@ const GallerySection = () => {
                             className="relative w-full max-w-5xl h-[60vh] md:h-[85vh] rounded-xl overflow-hidden shadow-2xl"
                             onClick={(e) => e.stopPropagation()}
                         >
-                            <Image
-                                src={GALLERY_IMAGES[currentIndex]}
-                                alt="Full Screen Gallery Image"
-                                fill
-                                className="object-contain"
-                                quality={100}
-                                priority
-                            />
+                            <motion.div
+                                key={currentIndex}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: 0.3 }}
+                                className="relative w-full h-full"
+                            >
+                                <Image
+                                    src={GALLERY_IMAGES[currentIndex]}
+                                    alt="Full Screen Gallery Image"
+                                    fill
+                                    className="object-contain"
+                                    quality={100}
+                                    priority
+                                />
+                            </motion.div>
                         </motion.div>
+
+                        <button
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                nextSlide();
+                            }}
+                            className="absolute right-4 md:right-10 text-white/70 hover:text-white transition-colors z-[110] cursor-pointer p-2 md:p-3 bg-white/5 md:bg-white/10 rounded-full hover:bg-white/20"
+                        >
+                            <ChevronRight className="w-8 h-8 md:w-10 md:h-10" />
+                        </button>
+
                     </motion.div>
                 )}
             </AnimatePresence>

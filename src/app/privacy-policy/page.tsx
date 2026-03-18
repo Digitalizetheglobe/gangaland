@@ -78,7 +78,7 @@ export default function PrivacyPolicy() {
           <section className="mb-12 border-t border-neutral-800 pt-8">
             <h2 className="text-xl font-semibold text-white mb-4">7. Contact Us</h2>
             <div className="space-y-2">
-              <p>Email: <a href={`mailto:${SITE_CONFIG.contact.email}`} className="text-white hover:underline">{SITE_CONFIG.contact.email}</a></p>
+              {/* <p>Email: <a href={`mailto:${SITE_CONFIG.contact.email}`} className="text-white hover:underline">{SITE_CONFIG.contact.email}</a></p> */}
               <p>Phone: <a href={`tel:${SITE_CONFIG.contact.phone}`} className="text-white hover:underline">{SITE_CONFIG.contact.phone}</a></p>
               <p>Address: <span className="text-neutral-400">{SITE_CONFIG.address}</span></p>
             </div>
