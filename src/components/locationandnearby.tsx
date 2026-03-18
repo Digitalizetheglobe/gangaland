@@ -83,7 +83,7 @@ export default function LocationAndNearby() {
         >
           <div className="flex items-center justify-center gap-4 mb-4">
             <span className="text-[#FFD44F] font-bold uppercase tracking-widest text-sm">Location Advantages</span>
-            <div className="h-[2px] w-12 bg-[#3A5D8F]"></div>
+            {/* <div className="h-[2px] w-12 bg-[#3A5D8F]"></div> */}
           </div>
           <h2 className="font-raleway text-4xl md:text-5xl font-bold leading-tight tracking-tight text-white">
             Bavdhan: Where Pune Trains Its Future.

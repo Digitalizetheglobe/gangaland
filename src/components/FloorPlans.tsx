@@ -63,7 +63,7 @@ const FloorPlans = () => {
     const [activeTab, setActiveTab] = useState(FLOOR_PLANS[0].id);
     const [isLightboxOpen, setIsLightboxOpen] = useState(false);
     const { openScheduleModal } = useScheduleModal();
-    
+
     const activePlan = FLOOR_PLANS.find(plan => plan.id === activeTab) || FLOOR_PLANS[0];
 
     return (
@@ -74,7 +74,7 @@ const FloorPlans = () => {
 
             <div className="container mx-auto px-6 md:px-12 lg:px-24 relative z-10">
                 {/* Header */}
-                <motion.div 
+                <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -83,13 +83,13 @@ const FloorPlans = () => {
                 >
                     <div className="flex items-center gap-4 justify-center md:justify-start">
                         <span className="text-[#3A5D8F] font-bold uppercase tracking-widest text-sm">Design & Space</span>
-                        <motion.div 
+                        {/* <motion.div 
                             initial={{ width: 0 }}
                             whileInView={{ width: 48 }}
                             viewport={{ once: true }}
                             transition={{ duration: 1, delay: 0.3 }}
                             className="h-[2px] bg-[#3A5D8F]" 
-                        />
+                        /> */}
                     </div>
                     <h2 className="font-raleway text-4xl md:text-5xl font-bold leading-tight tracking-tight text-[#2354A2]">
                         Master <span className="text-[#3A5D8F]">Floor Plans</span>
@@ -100,16 +100,15 @@ const FloorPlans = () => {
                 </motion.div>
 
                 {/* Tabs */}
-                <div className="flex flex-wrap justify-center md:justify-start gap-4 mb-12">
+                <div className="flex flex-wrap justify-center md:justify-start gap-3 md:gap-4 mb-12">
                     {FLOOR_PLANS.map((plan) => (
                         <button
                             key={plan.id}
                             onClick={() => setActiveTab(plan.id)}
-                            className={`px-8 py-3 rounded-full font-raleway font-semibold cursor-pointer transition-all duration-300 border ${
-                                activeTab === plan.id 
-                                ? 'bg-[#3A5D8F] border-[#3A5D8F] text-white shadow-lg' 
-                                : 'border-gray-400 text-neutral-600 hover:border-[#3A5D8F] hover:text-[#3A5D8F]'
-                            }`}
+                            className={`w-[calc(50%-0.5rem)] md:w-auto px-4 md:px-8 py-3 rounded-full font-raleway font-semibold cursor-pointer transition-all duration-300 border text-xs md:text-sm ${activeTab === plan.id
+                                    ? 'bg-[#3A5D8F] border-[#3A5D8F] text-white shadow-lg'
+                                    : 'border-gray-400 text-neutral-600 hover:border-[#3A5D8F] hover:text-[#3A5D8F]'
+                                }`}
                         >
                             {plan.type}
                         </button>
@@ -119,7 +118,7 @@ const FloorPlans = () => {
                 {/* Content Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                     {/* Image Section */}
-                    <motion.div 
+                    <motion.div
                         key={`${activeTab}-image`}
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
@@ -135,10 +134,10 @@ const FloorPlans = () => {
                                 className="object-contain p-4 group-hover:scale-105 transition-transform duration-700"
                                 priority
                             />
-                            
+
                             {/* Overlay */}
                             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 flex items-center justify-center">
-                                <motion.div 
+                                <motion.div
                                     initial={{ opacity: 0, scale: 0.5 }}
                                     whileHover={{ opacity: 1, scale: 1 }}
                                     className="bg-white/90 p-4 rounded-full shadow-xl"
@@ -150,7 +149,7 @@ const FloorPlans = () => {
                     </motion.div>
 
                     {/* Details Section */}
-                    <motion.div 
+                    <motion.div
                         key={`${activeTab}-details`}
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
@@ -164,22 +163,22 @@ const FloorPlans = () => {
 
                         {/* Stats Grid */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            <div className="bg-white p-6 rounded-2xl border border-gray-400 shadow-md">
+                            <div className="bg-white p-4 md:p-6 rounded-2xl border border-gray-400 shadow-md">
                                 <Ruler className="text-[#3A5D8F] mb-3 w-6 h-6" />
                                 <div className="text-neutral-500 text-sm uppercase tracking-widest font-bold">Total Area</div>
                                 <div className="text-[#12394C] text-xl font-bold">{activePlan.area}</div>
                             </div>
-                            <div className="bg-white p-6 rounded-2xl border border-gray-400 shadow-md">
+                            <div className="bg-white p-4 md:p-6 rounded-2xl border border-gray-400 shadow-md">
                                 <Square className="text-[#3A5D8F] mb-3 w-6 h-6" />
                                 <div className="text-neutral-500 text-sm uppercase tracking-widest font-bold">Carpet Area</div>
                                 <div className="text-[#12394C] text-xl font-bold">{activePlan.carpet}</div>
                             </div>
-                            <div className="bg-white p-6 rounded-2xl border border-gray-400 shadow-md">
+                            <div className="bg-white p-4 md:p-6 rounded-2xl border border-gray-400 shadow-md">
                                 <BedDouble className="text-[#3A5D8F] mb-3 w-6 h-6" />
                                 <div className="text-neutral-500 text-sm uppercase tracking-widest font-bold">Unit Type</div>
                                 <div className="text-[#12394C] text-xl font-bold">{activePlan.type}</div>
                             </div>
-                            <div className="bg-white p-6 rounded-2xl border border-gray-400 shadow-md">
+                            <div className="bg-white p-4 md:p-6 rounded-2xl border border-gray-400 shadow-md">
                                 <Bath className="text-[#3A5D8F] mb-3 w-6 h-6" />
                                 <div className="text-neutral-500 text-sm uppercase tracking-widest font-bold">Balcony</div>
                                 <div className="text-[#12394C] text-xl font-bold">{activePlan.balcony}</div>
@@ -200,13 +199,13 @@ const FloorPlans = () => {
                         </div>
 
                         {/* CTA */}
-                        <motion.button 
+                        <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             onClick={openScheduleModal}
-                            className="w-full sm:w-auto bg-[#FFD44F] hover:bg-[#FFD44F]/80 text-black cursor-pointer font-bold py-3 px-6 rounded-full text-lg shadow-2xl transition-all tracking-widest border border-white/10"
+                            className="group flex flex-1 sm:flex-initial items-center justify-center gap-2.5 rounded-full cursor-pointer bg-[#FFD44F] px-7 py-4 text-sm font-semibold text-black transition hover:bg-[#FFD44F]/60"
                         >
-                            More Details
+                            Get More Details
                         </motion.button>
                     </motion.div>
                 </div>
@@ -228,7 +227,7 @@ const FloorPlans = () => {
                         >
                             <X className="w-8 h-8" />
                         </button>
-                        
+
                         <motion.div
                             initial={{ scale: 0.9, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}

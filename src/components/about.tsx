@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export default function AboutProperty() {
   return (
-    <section id="property" className="relative overflow-hidden bg-neutral-950 py-20 text-white md:py-28">
+    <section id="aboutus" className="relative overflow-hidden bg-neutral-950 py-20 text-white md:py-28">
       {/* Dynamic Background Glows */}
       <motion.div 
         initial={{ opacity: 0, scale: 0.8 }}
@@ -30,11 +30,11 @@ export default function AboutProperty() {
           className="mb-10 space-y-6"
         >
           <div className="flex items-center justify-center gap-3">
-            <span className="h-[1px] w-12 bg-[#FFD44F]/50"></span>
+            {/* <span className="h-[1px] w-12 bg-[#FFD44F]/50"></span> */}
             <h2 className="text-xs font-bold uppercase tracking-[0.4em] text-[#FFD44F]">
               About
             </h2>
-            <span className="h-[1px] w-12 bg-[#FFD44F]/50"></span>
+            {/* <span className="h-[1px] w-12 bg-[#FFD44F]/50"></span> */}
           </div>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}

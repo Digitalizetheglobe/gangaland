@@ -85,7 +85,7 @@ export default function Amenities() {
         </motion.div>
 
         {/* Premium Tab Bar */}
-        <div className="mt-12 flex flex-wrap justify-center md:justify-start gap-3 border-b border-white/5 pb-6">
+        <div className="mt-12 flex flex-wrap justify-center md:justify-center gap-3 border-b border-white/5 pb-6">
           {tabs.map((tab) => (
             <button
               key={tab.key}

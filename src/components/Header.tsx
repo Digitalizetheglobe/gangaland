@@ -27,9 +27,8 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleNavClick = (href: string) => {
+  const handleNavClick = () => {
     setIsMobileMenuOpen(false);
-    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -52,13 +51,14 @@ export default function Header() {
             
             <nav className="flex flex-col gap-6 text-xl font-medium text-neutral-800">
               {NAV_LINKS.map((link) => (
-                <button
+                <Link
                   key={link.href}
-                  onClick={() => handleNavClick(link.href)}
+                  href={link.href}
+                  onClick={handleNavClick}
                   className="text-left py-2 hover:text-[#3A5D8F] transition-colors"
                 >
                   {link.label}
-                </button>
+                </Link>
               ))}
             </nav>
             
@@ -100,15 +100,13 @@ export default function Header() {
 
               <nav className="hidden items-center gap-10 text-md font-semibold text-black md:flex">
                 {NAV_LINKS.map((link) => (
-                  <button
+                  <Link
                     key={link.href}
-                    onClick={() => {
-                      document.querySelector(link.href)?.scrollIntoView({ behavior: "smooth" });
-                    }}
+                    href={link.href}
                     className="hover:text-[#FFD44F] transition-colors cursor-pointer"
                   >
                     {link.label}
-                  </button>
+                  </Link>
                 ))}
               </nav>
 
@@ -143,7 +141,7 @@ export default function Header() {
         }}
         className="fixed top-0 left-0 right-0 z-50 bg-white py-2 md:py-3 pl-4 md:pl-5 pr-4 md:pr-6 shadow-md"
       >
-        <div className="mx-auto flex items-center justify-between">
+        <div className="mx-auto flex items-center justify-between gap-4">
           <Link href="/" className="flex items-center gap-4 md:gap-5">
             <Image
               src="/images/logo.png"
@@ -156,22 +154,20 @@ export default function Header() {
 
           <nav className="hidden items-center gap-10 text-xl font-medium text-neutral-800 md:flex">
             {NAV_LINKS.map((link) => (
-              <button
+              <Link
                 key={link.href}
-                onClick={() => {
-                  document.querySelector(link.href)?.scrollIntoView({ behavior: "smooth" });
-                }}
+                href={link.href}
                 className="hover:text-[#3A5D8F] transition-colors cursor-pointer"
               >
                 {link.label}
-              </button>
+              </Link>
             ))}
           </nav>
 
           <div className="flex items-center gap-2 md:gap-4">
             <button
               onClick={openScheduleModal}
-              className="rounded-full bg-[#12394C] px-3 py-1.5 text-xs font-bold text-white transition hover:bg-[#3A5D8F] md:px-6 md:py-2.5 md:text-sm cursor-pointer"
+              className="rounded-full bg-[#12394C] px-3 py-1.5 text-xs font-bold text-white transition hover:bg-[#3A5D8F] md:px-6 md:py-2.5 md:text-sm cursor-pointer whitespace-nowrap"
             >
              Enquire Now            
             </button>

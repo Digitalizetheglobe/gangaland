@@ -26,7 +26,7 @@ export default function Banner() {
   }, [videoOpen]);
 
   return (
-    <section className="relative z-10 flex flex-col md:flex-row md:min-h-screen">
+    <section className="relative z-10 mt-10 sm:mt-0 flex flex-col md:flex-row md:min-h-screen" id="home">
       {/* Left panel - black background + image */}
       <motion.div
         initial={{ x: -100, opacity: 0 }}
@@ -80,7 +80,7 @@ export default function Banner() {
           >
             <button
               onClick={openScheduleModal}
-              className="group flex flex-1 sm:flex-initial items-center justify-center gap-2.5 rounded-full cursor-pointer bg-[#FFD44F] px-7 py-4 text-sm font-semibold text-black transition hover:bg-[#FFD44F]/60"
+              className="group flex flex-1 text-xs sm:flex-initial items-center justify-center gap-2.5 rounded-full cursor-pointer bg-[#FFD44F] px-7 py-4 sm:text-sm font-semibold text-black transition hover:bg-[#FFD44F]/60"
             >
               Enquire Now
               <svg className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -89,7 +89,7 @@ export default function Banner() {
             </button>
             <button
               onClick={() => setVideoOpen(true)}
-              className="group flex flex-1 sm:flex-initial items-center justify-center gap-3 cursor-pointer rounded-full bg-white/10 px-7 py-4 text-sm font-semibold text-white transition hover:bg-white/20"
+              className="group flex flex-1 text-xs sm:flex-initial items-center justify-center gap-2 cursor-pointer rounded-full bg-white/10 px-7 py-4 sm:text-sm font-semibold text-white transition hover:bg-white/20"
             >
               <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#FFD44F]">
                 <svg className="h-3 w-3 text-black" fill="currentColor" viewBox="0 0 24 24">
@@ -126,7 +126,7 @@ export default function Banner() {
            initial={{ opacity: 0, x: 20 }}
            animate={{ opacity: 1, x: 0 }}
            transition={{ delay: 1, duration: 0.8 }}
-           className="absolute bottom-50 right-18 z-10 min-w-[300px] rounded-2xl border border-white/20 bg-black/40 p-6 shadow-2xl backdrop-blur-md"
+           className="absolute bottom-50 right-30 z-10 min-w-[300px] rounded-2xl border border-white/20 bg-black/40 p-6 shadow-2xl backdrop-blur-md"
         >
           <div className="flex flex-col items-center space-y-4 text-center">
             <div className="w-full border-b border-white/10 pb-3">

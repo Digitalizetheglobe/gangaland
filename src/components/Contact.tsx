@@ -133,7 +133,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative py-20 text-white md:py-28 overflow-hidden" 
+      className="relative py-16 text-white md:py-28 overflow-hidden" 
       style={{
         backgroundImage: "url('/images/gallery (2).png')",
         backgroundSize: "cover",
@@ -143,7 +143,7 @@ export default function Contact() {
       {/* Dark overlay for contrast */}
       <div className="absolute inset-0 bg-neutral-950/80 backdrop-blur-sm"></div>
 
-      <div className="mx-auto flex max-w-6xl flex-col gap-10 px-6 lg:flex-row lg:items-start lg:gap-14 relative z-10">
+      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 lg:flex-row lg:items-start lg:gap-14 relative z-10">
         {/* Left: Text + contact details */}
         <motion.div 
           initial={{ opacity: 0, x: -50 }}
@@ -156,8 +156,8 @@ export default function Contact() {
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#FFD44F]">
               Contact Us
             </p>
-            <h2 className="font-raleway text-3xl md:text-5xl font-bold leading-tight tracking-tight text-white">
-              Let&apos;s Talk About <br />
+            <h2 className="font-raleway text-4xl md:text-5xl font-bold leading-tight tracking-tight text-white">
+              Let&apos;s Talk About <br className="hidden md:block" />
               <span className="text-[#FFD44F]">Your New Home</span>
             </h2>
           </div>
@@ -168,7 +168,7 @@ export default function Contact() {
             needs.
           </p>
 
-          <div className="space-y-6 rounded-3xl bg-white/10 p-5 md:p-6 ring-1 ring-white/20 backdrop-blur-md shadow-xl">
+          <div className="space-y-6 rounded-3xl bg-white/10 p-4 md:p-6 ring-1 ring-white/20 backdrop-blur-md shadow-xl">
             <div className="space-y-2">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-400">
                 Call Us
@@ -184,7 +184,7 @@ export default function Contact() {
               </a>
             </div>
 
-            <div className="space-y-2">
+            {/* <div className="space-y-2">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-400">
                 Email
               </p>
@@ -197,7 +197,7 @@ export default function Contact() {
                 </span>
                 <span>{SITE_CONFIG.contact.email}</span>
               </a>
-            </div>
+            </div> */}
 
             <div className="space-y-2">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-400">
@@ -424,23 +424,23 @@ export default function Contact() {
                   </div>
                   
                   <div className="grid gap-2 text-sm border-t border-green-500/20 pt-4 text-neutral-300">
-                    <div className="flex justify-between">
+                    <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-4">
                       <span className="font-semibold text-white">Name:</span>
                       <span>{submittedData?.name}</span>
                     </div>
-                    <div className="flex justify-between">
+                    <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-4">
                       <span className="font-semibold text-white">Email:</span>
                       <span>{submittedData?.email}</span>
                     </div>
-                     <div className="flex justify-between">
+                     <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-4">
                       <span className="font-semibold text-white">Phone:</span>
                       <span>{submittedData?.phone}</span>
                     </div>
-                    <div className="flex justify-between">
+                    <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-4">
                       <span className="font-semibold text-white">Unit Interested:</span>
                       <span>{submittedData?.unit}</span>
                     </div>
-                    <div className="flex justify-between">
+                    <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-4">
                       <span className="font-semibold text-white">Submission Time:</span>
                       <span>{submittedData?.submittedAt}</span>
                     </div>

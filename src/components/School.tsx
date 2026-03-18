@@ -25,11 +25,11 @@ export default function School() {
                     className="mx-auto mb-12 md:mb-20 max-w-4xl text-center space-y-8"
                 >
                     <div className="flex items-center justify-center gap-4">
-                        <span className="h-px w-10 bg-[#FFD44F]/40"></span>
+                        {/* <span className="h-px w-10 bg-[#FFD44F]/40"></span> */}
                         <h2 className="text-xs font-bold uppercase tracking-[0.4em] text-[#FFD44F]">
                             Education
                         </h2>
-                        <span className="h-px w-10 bg-[#FFD44F]/40"></span>
+                        {/* <span className="h-px w-10 bg-[#FFD44F]/40"></span> */}
                     </div>
 
                     <h2 className="font-raleway text-3xl md:text-5xl font-bold leading-tight tracking-tight text-white text-center uppercase">

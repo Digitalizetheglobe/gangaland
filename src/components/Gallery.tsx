@@ -49,15 +49,15 @@ const GallerySection = () => {
                 >
                     <div className="flex items-center gap-4 justify-center md:justify-start">
                         <span className="text-[#3A5D8F] font-bold uppercase tracking-widest text-sm">Our Gallery</span>
-                        <motion.div 
+                        {/* <motion.div 
                             initial={{ width: 0 }}
                             whileInView={{ width: 48 }}
                             viewport={{ once: true }}
                             transition={{ duration: 1, delay: 0.3 }}
                             className="h-[2px] bg-[#3A5D8F]" 
-                        />
+                        /> */}
                     </div>
-                    <h2 className="font-raleway text-3xl md:text-5xl font-bold leading-tight tracking-tight text-[#2354A2] uppercase">
+                    <h2 className="font-raleway text-3xl md:text-5xl font-bold leading-tight tracking-tight text-[#2354A2] ">
                         Gallery
                     </h2>
                 </motion.div>
