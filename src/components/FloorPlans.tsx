@@ -116,7 +116,7 @@ const FloorPlans = () => {
                             className="h-[2px] bg-[#3A5D8F]" 
                         /> */}
                     </div>
-                    <h2 className="font-raleway text-4xl md:text-5xl font-bold leading-tight tracking-tight text-[#2354A2]">
+                    <h2 className="font-raleway text-4xl md:text-5xl uppercase font-bold leading-tight tracking-tight text-[#2354A2]">
                         Master <span className="text-[#3A5D8F]">Floor Plans</span>
                     </h2>
                     <p className="text-neutral-700 max-w-2xl mt-4 font-medium text-xl">

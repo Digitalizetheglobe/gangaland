@@ -57,7 +57,7 @@ const GallerySection = () => {
                             className="h-[2px] bg-[#3A5D8F]" 
                         /> */}
                     </div>
-                    <h2 className="font-raleway text-3xl md:text-5xl font-bold leading-tight tracking-tight text-[#2354A2] ">
+                    <h2 className="font-raleway uppercase text-3xl md:text-5xl font-bold leading-tight tracking-tight text-[#2354A2] ">
                         Gallery
                     </h2>
                 </motion.div>

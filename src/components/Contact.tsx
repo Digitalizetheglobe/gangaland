@@ -156,7 +156,7 @@ export default function Contact() {
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#FFD44F]">
               Contact Us
             </p>
-            <h2 className="font-raleway text-4xl md:text-5xl font-bold leading-tight tracking-tight text-white">
+            <h2 className="font-raleway text-4xl md:text-5xl uppercase font-bold leading-tight tracking-tight text-white">
               Let&apos;s Talk About <br className="hidden md:block" />
               <span className="text-[#FFD44F]">Your New Home</span>
             </h2>

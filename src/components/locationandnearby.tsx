@@ -85,7 +85,7 @@ export default function LocationAndNearby() {
             <span className="text-[#FFD44F] font-bold uppercase tracking-widest text-sm">Location Advantages</span>
             {/* <div className="h-[2px] w-12 bg-[#3A5D8F]"></div> */}
           </div>
-          <h2 className="font-raleway text-4xl md:text-5xl font-bold leading-tight tracking-tight text-white">
+          <h2 className="font-raleway text-4xl md:text-5xl uppercase font-bold leading-tight tracking-tight text-white">
             Bavdhan: Where Pune Trains Its Future.
           </h2>
           <p className="text-xl md:text-xl leading-relaxed text-gray-400 font-medium px-4">

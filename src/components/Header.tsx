@@ -169,7 +169,7 @@ export default function Header() {
               onClick={openScheduleModal}
               className="rounded-full bg-[#12394C] px-3 py-1.5 text-xs font-bold text-white transition hover:bg-[#3A5D8F] md:px-6 md:py-2.5 md:text-sm cursor-pointer whitespace-nowrap"
             >
-             Enquire Now            
+              Enquire Now
             </button>
             <button
               onClick={() => setIsMobileMenuOpen(true)}

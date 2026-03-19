@@ -60,7 +60,7 @@ export default function Counter() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="font-raleway text-3xl md:text-5xl font-bold tracking-tight text-white mb-8 md:mb-10"
+          className="font-raleway text-4xl uppercase md:text-5xl font-bold tracking-tight leading-tight text-white mb-8 md:mb-10"
         >
           The Stadium Life at a Glance
         </motion.h2>

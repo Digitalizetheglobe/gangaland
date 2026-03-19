@@ -73,9 +73,9 @@ export default function Amenities() {
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#FFD44F]">
             Amenities
           </p>
-          <h2 className="font-raleway text-4xl md:text-5xl font-bold leading-tight tracking-tight text-white">
+          <h2 className="font-raleway text-4xl md:text-5xl font-bold leading-tight tracking-tight uppercase text-white">
             Crafted Spaces For{" "}
-            <span className=" text-[#FFD44F]">Everyday Luxury</span>
+            <span className="text-[#FFD44F]">Everyday Luxury</span>
           </h2>
           <p className="mx-auto max-w-2xl text-xl leading-relaxed text-neutral-400 md:mx-0 md:text-xl">
             From wellness and recreation to social gatherings, every amenity is
