@@ -17,7 +17,7 @@ const categories: CategoryCard[] = [
     { name: "Swimming academy", imageSrc: "/images/swimming.png", imageAlt: "Cricket" },
     { name: "California Bowl", imageSrc: "/images/Ctennis.png", imageAlt: "Football" },
     { name: "Padel Tennis", imageSrc: "/images/padel.png", imageAlt: "Tennis" },
-    { name: "HotFut Sports", imageSrc: "/images/hotfut.png", imageAlt: "Badminton" },
+    { name: "HotFut Sports", imageSrc: "/images/hot-fut.png", imageAlt: "Badminton" },
     // { name: "Cricket academy", imageSrc: "/images/banner-left.png", imageAlt: "Cricket" },
     // { name: "Football academy", imageSrc: "/images/banner-left.png", imageAlt: "Football" },
 ]

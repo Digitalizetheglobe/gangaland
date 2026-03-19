@@ -34,7 +34,7 @@ export default function FixedButtons() {
           className="group flex w-12 items-center justify-start overflow-hidden rounded-r-lg bg-green-500 p-2 text-white shadow-lg transition-all duration-300 hover:w-36"
         >
           <Image 
-            src="/images/whatsapp.png" 
+            src="/images/whats-app.png" 
             alt="WhatsApp" 
             width={32} 
             height={32} 
