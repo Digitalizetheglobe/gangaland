@@ -3,59 +3,86 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Maximize2, X, Ruler, BedDouble, Bath, Square, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Maximize2, X, Ruler, BedDouble, Bath, Square, ChevronLeft, ChevronRight, Tag } from 'lucide-react';
 import { useScheduleModal } from "@/context/ModalContext";
 
 const FLOOR_PLANS = [
     {
-        id: 'master-layout',
-        title: 'Master Layout Plan',
-        type: 'Master Layout',
-        area: '30+ Acres Township',
-        carpet: 'Phase-2 Development',
-        balcony: 'Sports-First Living',
-        image: '/images/Masterplan.png',
-        features: ['1.25 Acre Central Park', 'Club Ileseum 2', 'GG International School', 'Temple Zone & Pylon']
+        id: '4bhk-a',
+        title: '4 BHK Unit A Type (Series 1 & 6)',
+        type: '4 BHK (A)',
+        price: '1.97 Cr* Onwards',
+        area: '1411 Sq.Ft.',
+        carpet: '1320 Sq.Ft.',
+        balcony: '91 Sq.Ft.',
+        image: '/images/Newplan1.png',
+        features: ['New Glass Facade Elevation', 'Possession Dec 2028', '2 Car Parks (Limited Offer)', 'Rooftop Lounge & Bar', 'Heated Pool with Cabanas', 'Private Cinema']
     },
     {
-        id: '3bhk-w1-s1',
-        title: '3 BHK Luxe Apartment (1 Series)',
-        type: 'Wing-1 | Series 1',
-        area: '1250 - 1380 Sq.Ft.',
-        carpet: '1120 Sq.Ft.',
-        balcony: '110 Sq.Ft.',
-        image: '/images/Plan2.png',
-        features: ['B5 Tower', 'Premium Series 1', 'Garden View', 'Cross Ventilation']
+        id: '4bhk-b',
+        title: '4 BHK Unit B Type (Series 2 & 5)',
+        type: '4 BHK (B)',
+        price: '1.81 Cr* Onwards',
+        area: '1294 Sq.Ft.',
+        carpet: '1238 Sq.Ft.',
+        balcony: '56 Sq.Ft.',
+        image: '/images/Newplan2.png',
+        features: ['New Glass Facade Elevation', 'Possession Dec 2028', '2 Car Parks (Limited Offer)', 'Business Lounge & Co-working', 'Pet Spa & Grooming', 'Emergency Medical Room']
     },
     {
-        id: '3bhk-w1-s2',
-        title: '3 BHK Luxe Apartment (2 Series)',
-        type: 'Wing-1 | Series 2',
-        area: '1250 - 1380 Sq.Ft.',
-        carpet: '1120 Sq.Ft.',
-        balcony: '110 Sq.Ft.',
-        image: '/images/Plan3.png',
-        features: ['B5 Tower', 'Premium Series 2', 'City Skyline Views', 'Master Suite Balcony']
+        id: '3bhk',
+        title: '3 BHK Unit Type (Series 4 & 7)',
+        type: '3 BHK',
+        price: '1.71 Cr* Onwards',
+        area: '1222 Sq.Ft.',
+        carpet: '1132 Sq.Ft.',
+        balcony: '90 Sq.Ft.',
+        image: '/images/Newplan3.png',
+        features: ['New Glass Facade Elevation', 'Possession Dec 2028', '2 Car Parks (Limited Offer)', 'Kids’ Creche & Daycare', 'Music & Dance Studio', 'Art Gallery & Library']
     },
     {
-        id: '3bhk-w2-s1',
-        title: '3 BHK Luxe Apartment (1 Series)',
-        type: 'Wing-2 | Series 1',
-        area: '1250 - 1380 Sq.Ft.',
-        carpet: '1120 Sq.Ft.',
-        balcony: '110 Sq.Ft.',
-        image: '/images/Plan4.png',
-        features: ['B5 Tower', 'Wing-2 Exclusive', 'Pool Facing', 'Elegant Layout']
+        id: '2-5bhk',
+        title: '2.5 BHK Unit (Series 3 & 8)',
+        type: '2.5 BHK',
+        price: '1.44 Cr* Onwards',
+        area: '1030 Sq.Ft.',
+        carpet: '978 Sq.Ft.',
+        balcony: '52 Sq.Ft.',
+        image: '/images/Newplan4.png',
+        features: ['New Glass Facade Elevation', 'Possession Dec 2028', 'Indoor Games & Card Room', 'Banquet Hall', 'Snooker Room', 'Gym & Meditation Pavilion']
     },
     {
-        id: '3bhk-w2-s2',
-        title: '3 BHK Luxe Apartment (2 Series)',
-        type: 'Wing-2 | Series 2',
-        area: '1250 - 1380 Sq.Ft.',
-        carpet: '1120 Sq.Ft.',
-        balcony: '110 Sq.Ft.',
-        image: '/images/Plan1.png',
-        features: ['B5 Tower', 'Wing-2 Premium', 'Spacious Living', 'Elite Finishes']
+        id: '1-5bhk-refuge',
+        title: '1.5 BHK Unit (Series 3 & 8) Refuge Floor',
+        type: '1.5 BHK (Refuge)',
+        price: 'Request Price',
+        area: '821 Sq.Ft.',
+        carpet: '821 Sq.Ft.',
+        balcony: '0 Sq.Ft.',
+        image: '/images/Newplan5.png',
+        features: ['New Glass Facade Elevation', 'Possession Dec 2028', 'Steam, Sauna & Ice Bath', 'Emergency Medical Room', 'Private Deck Access', 'Integrated Refuge Area']
+    },
+    {
+        id: 'typical-floor',
+        title: 'Typical Floor Layout Plan',
+        type: 'Typical Layout',
+        price: 'TBA',
+        area: 'Full Tower Layout',
+        carpet: 'Multi-Unit Typical',
+        balcony: 'All Series Integrated',
+        image: '/images/Newplan6.png',
+        features: ['New Glass Facade Elevation', 'Possession Dec 2028', 'Luxury High-Speed Lifts', 'Sky Lounge Access', 'Central Lifestyle Zone', 'Enhanced Safety Pylon']
+    },
+    {
+        id: 'refuge-floor',
+        title: 'Refuge Floor Layout Plan',
+        type: 'Refuge Layout',
+        price: 'TBA',
+        area: 'Full Refuge Level',
+        carpet: 'Multi-Unit Refuge',
+        balcony: 'Integrated Refuge Area',
+        image: '/images/Newplan7.png',
+        features: ['New Glass Facade Elevation', 'Possession Dec 2028', 'Dedicated Refuge Safety Zone', 'Direct Fire Escape access', 'Emergency Hub', 'Medical Room Proximity']
     }
 ];
 
@@ -108,13 +135,6 @@ const FloorPlans = () => {
                 >
                     <div className="flex items-center gap-4 justify-center md:justify-start">
                         <span className="text-[#3A5D8F] font-bold uppercase tracking-widest text-sm">Design & Space</span>
-                        {/* <motion.div 
-                            initial={{ width: 0 }}
-                            whileInView={{ width: 48 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 1, delay: 0.3 }}
-                            className="h-[2px] bg-[#3A5D8F]" 
-                        /> */}
                     </div>
                     <h2 className="font-raleway text-4xl md:text-5xl uppercase font-bold leading-tight tracking-tight text-[#2354A2]">
                         Master <span className="text-[#3A5D8F]">Floor Plans</span>
@@ -125,19 +145,21 @@ const FloorPlans = () => {
                 </motion.div>
 
                 {/* Tabs */}
-                <div className="flex flex-wrap justify-center md:justify-start gap-3 md:gap-4 mb-12">
-                    {FLOOR_PLANS.map((plan) => (
-                        <button
-                            key={plan.id}
-                            onClick={() => setActiveTab(plan.id)}
-                            className={`w-[calc(50%-0.5rem)] md:w-auto px-4 md:px-8 py-3 rounded-full font-raleway font-semibold cursor-pointer transition-all duration-300 border text-xs md:text-sm ${activeTab === plan.id
-                                    ? 'bg-[#3A5D8F] border-[#3A5D8F] text-white shadow-lg'
-                                    : 'border-gray-400 text-neutral-600 hover:border-[#3A5D8F] hover:text-[#3A5D8F]'
-                                }`}
-                        >
-                            {plan.type}
-                        </button>
-                    ))}
+                <div className="relative mb-12">
+                    <div className="grid grid-cols-4 md:flex md:flex-wrap justify-center gap-2 md:gap-4">
+                        {FLOOR_PLANS.map((plan) => (
+                            <button
+                                key={plan.id}
+                                onClick={() => setActiveTab(plan.id)}
+                                className={`px-1 md:px-8 py-3 rounded-xl md:rounded-full font-raleway font-semibold cursor-pointer transition-all duration-300 border text-[9px] sm:text-xs md:text-sm whitespace-nowrap tracking-tighter md:tracking-normal ${activeTab === plan.id
+                                    ? 'bg-[#12394C] border-[#12394C] text-white shadow-lg transform md:scale-105'
+                                    : 'bg-white/50 border-gray-400 text-neutral-600 hover:border-[#3A5D8F] hover:text-[#3A5D8F]'
+                                    }`}
+                            >
+                                {plan.type}
+                            </button>
+                        ))}
+                    </div>
                 </div>
 
                 {/* Content Grid */}
@@ -187,26 +209,26 @@ const FloorPlans = () => {
                         </div>
 
                         {/* Stats Grid */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            <div className="bg-white p-4 md:p-6 rounded-2xl border border-gray-400 shadow-md">
-                                <Ruler className="text-[#3A5D8F] mb-3 w-6 h-6" />
-                                <div className="text-neutral-500 text-sm uppercase tracking-widest font-bold">Total Area</div>
-                                <div className="text-[#12394C] text-xl font-bold">{activePlan.area}</div>
+                        <div className="grid grid-cols-2 lg:grid-cols-2 gap-3 md:gap-6">
+                            <div className="bg-white p-3 md:p-6 rounded-2xl border border-gray-400 shadow-md">
+                                <Tag className="text-[#3A5D8F] mb-3 w-5 h-5 md:w-6 md:h-6" />
+                                <div className="text-neutral-500 text-[10px] md:text-sm uppercase tracking-widest font-bold">Starting Price</div>
+                                <div className="text-[#12394C] text-sm md:text-xl font-bold">{activePlan.price}</div>
                             </div>
-                            <div className="bg-white p-4 md:p-6 rounded-2xl border border-gray-400 shadow-md">
-                                <Square className="text-[#3A5D8F] mb-3 w-6 h-6" />
-                                <div className="text-neutral-500 text-sm uppercase tracking-widest font-bold">Carpet Area</div>
-                                <div className="text-[#12394C] text-xl font-bold">{activePlan.carpet}</div>
+                            <div className="bg-white p-3 md:p-6 rounded-2xl border border-gray-400 shadow-md">
+                                <Square className="text-[#3A5D8F] mb-3 w-5 h-5 md:w-6 md:h-6" />
+                                <div className="text-neutral-500 text-[10px] md:text-sm uppercase tracking-widest font-bold">Carpet Area</div>
+                                <div className="text-[#12394C] text-sm md:text-xl font-bold">{activePlan.carpet}</div>
                             </div>
-                            <div className="bg-white p-4 md:p-6 rounded-2xl border border-gray-400 shadow-md">
-                                <BedDouble className="text-[#3A5D8F] mb-3 w-6 h-6" />
-                                <div className="text-neutral-500 text-sm uppercase tracking-widest font-bold">Unit Type</div>
-                                <div className="text-[#12394C] text-xl font-bold">{activePlan.type}</div>
+                            <div className="bg-white p-3 md:p-6 rounded-2xl border border-gray-400 shadow-md">
+                                <BedDouble className="text-[#3A5D8F] mb-3 w-5 h-5 md:w-6 md:h-6" />
+                                <div className="text-neutral-500 text-[10px] md:text-sm uppercase tracking-widest font-bold">Unit Type</div>
+                                <div className="text-[#12394C] text-sm md:text-xl font-bold">{activePlan.type}</div>
                             </div>
-                            <div className="bg-white p-4 md:p-6 rounded-2xl border border-gray-400 shadow-md">
-                                <Bath className="text-[#3A5D8F] mb-3 w-6 h-6" />
-                                <div className="text-neutral-500 text-sm uppercase tracking-widest font-bold">Balcony</div>
-                                <div className="text-[#12394C] text-xl font-bold">{activePlan.balcony}</div>
+                            <div className="bg-white p-3 md:p-6 rounded-2xl border border-gray-400 shadow-md">
+                                <Bath className="text-[#3A5D8F] mb-3 w-5 h-5 md:w-6 md:h-6" />
+                                <div className="text-neutral-500 text-[10px] md:text-sm uppercase tracking-widest font-bold">Balcony</div>
+                                <div className="text-[#12394C] text-sm md:text-xl font-bold">{activePlan.balcony}</div>
                             </div>
                         </div>
 
@@ -222,6 +244,7 @@ const FloorPlans = () => {
                                 ))}
                             </div>
                         </div>
+
 
                         {/* CTA */}
                         <motion.button

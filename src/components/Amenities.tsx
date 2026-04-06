@@ -8,7 +8,7 @@ const AMENITIES_DATA = {
     "1.1 Acre Public Plaza", "Health Care", "GG International School", "Day Care Facilities",
     "Indoor Badminton Courts", "2 Padel Tennis Courts", "3 Lawn Tennis Courts",
     "Cricket Practice Nets (10-lane)", "Basketball Court", "Skatepark (California Bowl)",
-    "8 Lane Running Track", "Hotfut Football Ground", "Temple", "Greenart Café",
+    "8 Lane Running Track", "Hotfut Football Ground", "Temple", "Greenart Cafe",
     "2 Pickleball Courts", "Business Center", "Co-Working Space", "Indoor Sports",
     "Auditorium", "Seating Arena for Spectators", "Tagda Raho by Dhoni"
   ],

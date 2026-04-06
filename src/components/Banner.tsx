@@ -32,7 +32,7 @@ export default function Banner() {
         initial={{ x: -100, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="relative flex w-full md:w-[35%] min-w-0 md:min-w-[360px] max-w-full md:max-w-[600px] flex-col justify-center overflow-hidden bg-[#050509] px-6 py-12 md:px-14 md:py-16 lg:px-20"
+        className="relative flex w-full md:w-[45%] min-w-0 md:min-w-[450px] max-w-full md:max-w-[700px] flex-col justify-center overflow-hidden bg-[#050509] px-6 py-12 md:px-14 md:py-16 lg:px-20"
       >
         {/* Background image */}
         <motion.div
@@ -51,14 +51,28 @@ export default function Banner() {
         </motion.div>
 
         <div className="relative z-10 max-w-lg space-y-8">
+          {/* Pre-headline tag */}
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="flex items-center gap-2"
+          >
+            {/* <div className="h-px w-8 bg-[#FFD44F]" /> */}
+            <span className="text-[#FFD44F] text-xs sm:text-sm font-bold uppercase tracking-[0.3em]">
+              India&apos;s First Longevity District
+            </span>
+          </motion.div>
+
           {/* Headline - premium feel */}
           <motion.h1
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="font-raleway text-3xl sm:text-4xl md:text-6xl font-bold leading-tight tracking-tight text-white uppercase"
+            className="font-raleway text-3xl sm:text-4xl md:text-5xl font-bold leading-tight tracking-tight text-white uppercase"
           >
-            Live the <br className="md:hidden" /> Stadium Life
+            <span className="block">Live naturally.</span>
+            <span className="block">Live longer.</span>
           </motion.h1>
 
           {/* Description */}
@@ -68,7 +82,7 @@ export default function Banner() {
             transition={{ delay: 0.5, duration: 0.8 }}
             className="max-w-md text-sm sm:text-base md:text-xl leading-relaxed text-gray-400"
           >
-            Experience a world-class lifestyle at Ganga Legends, Pune&apos;s most ambitious sports-first residential township.
+           Your home should engineer your health. The Living Blueprint integrates architecture, coaching, and community into one longevity system.
           </motion.p>
 
           {/* CTA buttons */}
@@ -123,10 +137,10 @@ export default function Banner() {
 
         {/* Pricing Overlay - Desktop */}
         <motion.div
-           initial={{ opacity: 0, x: 20 }}
-           animate={{ opacity: 1, x: 0 }}
-           transition={{ delay: 1, duration: 0.8 }}
-           className="absolute bottom-50 right-30 z-10 min-w-[300px] rounded-2xl border border-white/20 bg-black/40 p-6 shadow-2xl backdrop-blur-md"
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 1, duration: 0.8 }}
+          className="absolute bottom-50 right-30 z-10 min-w-[300px] rounded-2xl border border-white/20 bg-black/40 p-6 shadow-2xl backdrop-blur-md"
         >
           <div className="flex flex-col items-center space-y-4 text-center">
             <div className="w-full border-b border-white/10 pb-3">
@@ -135,17 +149,17 @@ export default function Banner() {
             </div>
             <div className="flex w-full flex-col items-center justify-center space-y-4 py-1">
               <div className="flex flex-col items-center justify-center gap-1">
-                 <span className="text-xl font-bold text-white">3 BHK</span>
-                 <span className="text-sm font-medium text-neutral-200">₹1.77 Cr to ₹1.87 Cr</span>
+                <span className="text-xl font-bold text-white">3 BHK</span>
+                <span className="text-sm font-medium text-neutral-200">₹1.77 Cr to ₹1.87 Cr</span>
               </div>
               <div className="h-px w-12 bg-white/10"></div>
               <div className="flex flex-col items-center justify-center gap-1">
-                 <span className="text-xl font-bold text-white">3.5 BHK</span>
-                 <span className="text-sm font-medium text-neutral-200">₹1.96 Cr to ₹2.16 Cr</span>
+                <span className="text-xl font-bold text-white">3.5 BHK</span>
+                <span className="text-sm font-medium text-neutral-200">₹1.96 Cr to ₹2.16 Cr</span>
               </div>
             </div>
             <div className="w-full pt-2">
-              <button 
+              <button
                 onClick={openScheduleModal}
                 className="w-full cursor-pointer rounded-full bg-[#FFD44F] px-2 py-2 text-md font-bold text-black transition hover:bg-[#FFD44F]/80"
               >
@@ -217,11 +231,11 @@ export default function Banner() {
 
         {/* Pricing Overlay - Mobile */}
         <motion.div
-           initial={{ opacity: 0, y: 10 }}
-           whileInView={{ opacity: 1, y: 0 }}
-           viewport={{ once: true }}
-           transition={{ delay: 0.3, duration: 0.6 }}
-           className="absolute bottom-4 left-4 right-4 z-10 rounded-xl border border-white/20 bg-black/50 p-4 shadow-lg backdrop-blur-md"
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3, duration: 0.6 }}
+          className="absolute bottom-4 left-4 right-4 z-10 rounded-xl border border-white/20 bg-black/50 p-4 shadow-lg backdrop-blur-md"
         >
           <div className="flex flex-col items-center space-y-3 text-center">
             <div className="w-full border-b border-white/10 pb-2">
@@ -230,17 +244,17 @@ export default function Banner() {
             </div>
             <div className="flex w-full flex-col items-center justify-center space-y-3 py-1">
               <div className="flex flex-col items-center justify-center gap-0.5">
-                 <span className="text-base font-bold text-white">3 BHK</span>
-                 <span className="text-xs font-medium text-neutral-200">₹1.77 Cr to ₹1.87 Cr</span>
+                <span className="text-base font-bold text-white">3 BHK</span>
+                <span className="text-xs font-medium text-neutral-200">₹1.77 Cr to ₹1.87 Cr</span>
               </div>
               <div className="h-px w-8 bg-white/10"></div>
               <div className="flex flex-col items-center justify-center gap-0.5">
-                 <span className="text-base font-bold text-white">3.5 BHK</span>
-                 <span className="text-xs font-medium text-neutral-200">₹1.96 Cr to ₹2.16 Cr</span>
+                <span className="text-base font-bold text-white">3.5 BHK</span>
+                <span className="text-xs font-medium text-neutral-200">₹1.96 Cr to ₹2.16 Cr</span>
               </div>
             </div>
             <div className="w-full pt-1">
-              <button 
+              <button
                 onClick={openScheduleModal}
                 className="w-full cursor-pointer rounded-full bg-[#FFD44F] px-4 py-2 text-[10px] font-bold text-black transition hover:bg-[#FFD44F]/80"
               >
