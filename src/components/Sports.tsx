@@ -79,7 +79,7 @@ export default function Sports() {
     );
 
     return (
-        <section id="sports" className="w-full bg-gray-300 py-20 md:py-28 relative z-20 overflow-hidden">
+        <section id="sports" className="w-full bg-gray-300 py-12 md:py-16 relative z-20 overflow-hidden">
             <div className="mx-auto max-w-7xl px-6">
                 <div className="text-center">
                     <motion.div 

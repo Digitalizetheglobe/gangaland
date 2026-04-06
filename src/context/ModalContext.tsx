@@ -112,7 +112,7 @@ export function ScheduleModalProvider({ children }: { children: ReactNode }) {
               exit={{ scale: 0.95, opacity: 0, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-md overflow-hidden rounded-3xl border border-white/10 bg-neutral-950 p-6 shadow-2xl md:p-8"
+              className="relative w-full max-w-md max-h-[90vh] overflow-y-auto rounded-3xl border border-white/10 bg-neutral-950 p-5 shadow-2xl md:p-8"
             >
               <button
                 onClick={closeScheduleModal}
@@ -122,7 +122,7 @@ export function ScheduleModalProvider({ children }: { children: ReactNode }) {
                 <X className="h-5 w-5" />
               </button>
 
-              <div className="mb-8">
+              <div className="mb-6 md:mb-8">
                 <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#FFD44F]">
                   Ganga Legends
                 </p>

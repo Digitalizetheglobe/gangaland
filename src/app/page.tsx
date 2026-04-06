@@ -2,6 +2,8 @@ import Header from "@/components/Header";
 import Banner from "@/components/Banner";
 import Counter from "@/components/Counter";
 import Property from "@/components/about";
+import TheConcept from "@/components/TheConcept";
+import TheLivingBlueprint from "@/components/TheLivingBlueprint";
 import Sports from "@/components/Sports";
 import Contact from "@/components/Contact";
 import Gallery from "@/components/Gallery";
@@ -29,6 +31,8 @@ export default function Home() {
       <Banner />
       <Counter />
       <Property />
+      <TheConcept />
+      <TheLivingBlueprint />
       <Sports />
       <School />
       <Gallery />

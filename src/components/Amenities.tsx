@@ -60,7 +60,7 @@ export default function Amenities() {
   };
 
   return (
-    <section id="amenities" className="relative bg-neutral-950 py-20 text-white md:py-28 overflow-hidden">
+    <section id="amenities" className="relative bg-neutral-950 py-12 text-white md:py-16 overflow-hidden">
       <div className="mx-auto max-w-7xl px-6">
         {/* Heading */}
         <motion.div 

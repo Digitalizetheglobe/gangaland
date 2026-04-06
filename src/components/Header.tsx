@@ -15,167 +15,99 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Toggle sticky header after 150px of scrolling
-      if (window.scrollY > 150) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 50);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleNavClick = () => {
-    setIsMobileMenuOpen(false);
-  };
-
   return (
     <>
+      <div className="h-12 md:h-0" /> {/* Mobile Spacer */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[60] bg-white/95 backdrop-blur-md flex flex-col pt-24 px-6 md:hidden"
+            initial={{ opacity: 0, x: "100%" }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: "100%" }}
+            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            className="fixed inset-0 z-[100] bg-white flex flex-col p-8 md:hidden"
           >
-            <button 
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="absolute top-6 right-6 p-2 text-neutral-800"
-            >
-              <X className="h-8 w-8" />
-            </button>
+            <div className="flex items-center justify-between mb-12">
+              <Image src="/images/logo.png" alt="Logo" width={100} height={40} className="h-8 w-auto" />
+              <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 text-black"><X size={32} /></button>
+            </div>
             
-            <nav className="flex flex-col gap-6 text-xl font-medium text-neutral-800">
+            <nav className="flex flex-col gap-8">
               {NAV_LINKS.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  onClick={handleNavClick}
-                  className="text-left py-2 hover:text-[#3A5D8F] transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-2xl font-bold text-neutral-900 border-b border-black/5 pb-4"
                 >
                   {link.label}
                 </Link>
               ))}
             </nav>
             
-            <div className="mt-10">
-              <button
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  openScheduleModal();
-                }}
-                className="w-full rounded-full bg-[#12394C] px-6 py-4 text-center text-xl font-bold text-white transition hover:bg-[#3A5D8F]"
-              >
-                Enquire Now
-              </button>
-            </div>
+            {/* Button removed from mobile menu per request */}
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* 1. Banner Header (Absolute) - Visible initially, fades out on scroll */}
-      <AnimatePresence>
-        {!isScrolled && (
-          <motion.header
-            key="banner-header"
-            initial={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.4 }}
-            className="absolute top-4 md:top-6 left-0 right-0 z-20 flex justify-center px-4"
-          >
-            <div className="flex w-full max-w-7xl items-center justify-between rounded-full bg-white/60 pl-4 md:pl-5 pr-4 md:pr-6 py-2 md:py-3 shadow-lg shadow-black/10 backdrop-blur">
-              <Link href="/" className="flex items-center gap-4 md:gap-5">
-                <Image
-                  src="/images/logo.png"
-                  alt="House logo"
-                  width={80}
-                  height={80}
-                  className="h-10 w-10 md:h-12 md:w-auto shrink-0 rounded-full object-contain"
-                />
-              </Link>
-
-              <nav className="hidden items-center gap-10 text-md font-semibold text-black md:flex">
-                {NAV_LINKS.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className="hover:text-[#FFD44F] transition-colors cursor-pointer"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </nav>
-
-              <div className="flex items-center gap-2 md:gap-3">
-                <button
-                  onClick={openScheduleModal}
-                  className="rounded-full bg-[#FFD44F] px-4 py-1.5 text-xs font-semibold text-neutral-900 transition hover:bg-[#FFD44F]/50 md:px-6 md:py-2 md:text-base cursor-pointer"
-                >
-                  Enquire Now
-                </button>
-                <button
-                  onClick={() => setIsMobileMenuOpen(true)}
-                  className="block md:hidden p-1.5 text-black hover:text-[#FFD44F]"
-                >
-                  <Menu className="h-6 w-6" />
-                </button>
-              </div>
-            </div>
-          </motion.header>
-        )}
-      </AnimatePresence>
-
-      {/* 2. Sticky Header (Fixed) - Slides down when scrolled past banner */}
       <motion.header
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: isScrolled ? 0 : -100, opacity: isScrolled ? 1 : 0 }}
-        transition={{ 
-          type: "spring", 
-          stiffness: 100, 
-          damping: 20,
-          duration: 0.8 // Premium feel transition
-        }}
-        className="fixed top-0 left-0 right-0 z-50 bg-white py-2 md:py-3 pl-4 md:pl-5 pr-4 md:pr-6 shadow-md"
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        className={`fixed left-0 right-0 z-50 flex justify-center transition-all duration-500 ${
+          isScrolled ? "top-0 px-0" : "top-6 px-6"
+        }`}
       >
-        <div className="mx-auto flex items-center justify-between gap-4">
-          <Link href="/" className="flex items-center gap-4 md:gap-5">
+        <div className={`flex items-center justify-between transition-all duration-500 ${
+          isScrolled 
+            ? "w-full bg-white py-6 px-6 md:px-12 border-b border-black/5 shadow-md" 
+            : "w-full max-w-[1400px] bg-white/60 py-4 px-8 rounded-full border border-white/20 shadow-2xl backdrop-blur-md"
+        }`}>
+          <Link href="/" className="shrink-0">
             <Image
               src="/images/logo.png"
               alt="Ganga Legend Logo"
-              width={80}
-              height={80}
-              className="h-10 w-10 md:h-12 md:w-auto shrink-0 object-contain"
+              width={180}
+              height={60}
+              className={`w-auto transition-all duration-500 ${isScrolled ? "h-10 md:h-12" : "h-10 md:h-12"}`}
             />
           </Link>
 
-          <nav className="hidden items-center gap-10 text-xl font-medium text-neutral-800 md:flex">
+          <nav className="hidden items-center gap-3 lg:gap-5 xl:gap-6 md:flex">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="hover:text-[#3A5D8F] transition-colors cursor-pointer"
+                className={`whitespace-nowrap text-[13px] font-bold uppercase tracking-widest transition-colors hover:text-[#3A5D8F] ${
+                  isScrolled ? "text-neutral-800" : "text-black"
+                }`}
               >
                 {link.label}
               </Link>
             ))}
           </nav>
 
-          <div className="flex items-center gap-2 md:gap-4">
+          <div className="flex items-center gap-4">
             <button
               onClick={openScheduleModal}
-              className="rounded-full bg-[#12394C] px-3 py-1.5 text-xs font-bold text-white transition hover:bg-[#3A5D8F] md:px-6 md:py-2.5 md:text-sm cursor-pointer whitespace-nowrap"
+              className={`hidden md:block rounded-full font-bold uppercase tracking-widest transition-all duration-300 whitespace-nowrap shadow-lg ${
+                isScrolled 
+                  ? "bg-[#12394C] text-white px-8 py-4 text-[12px] hover:bg-[#3A5D8F]" 
+                  : "bg-[#FFD44F] text-neutral-900 px-6 py-3 text-[11px] hover:bg-[#FFD44F]/80 shadow-[#FFD44F]/20"
+              }`}
             >
               Enquire Now
             </button>
             <button
               onClick={() => setIsMobileMenuOpen(true)}
-              className="block md:hidden p-1.5 text-neutral-800 hover:text-[#3A5D8F]"
+              className="block md:hidden text-black hover:opacity-70 transition-opacity"
             >
-              <Menu className="h-6 w-6" />
+              <Menu size={24} />
             </button>
           </div>
         </div>

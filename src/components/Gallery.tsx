@@ -37,7 +37,7 @@ const GallerySection = () => {
     const visibleItems = getVisibleImages();
 
     return (
-        <section id="gallery" className="w-full bg-gray-300 py-20 md:py-28 relative z-20 overflow-hidden">
+        <section id="gallery" className="w-full bg-gray-300 py-12 md:py-16 relative z-20 overflow-hidden">
             <div className="container mx-auto px-6 md:px-12 lg:px-24">
                 {/* Header */}
                 <motion.div 

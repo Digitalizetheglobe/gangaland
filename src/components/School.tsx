@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export default function School() {
     return (
-        <section id="school" className="relative overflow-hidden bg-neutral-950 py-20 text-white md:py-28">
+        <section id="school" className="relative overflow-hidden bg-neutral-950 py-12 text-white md:py-16">
             {/* Background Atmosphere */}
             <motion.div 
                 initial={{ opacity: 0, scale: 0.8 }}

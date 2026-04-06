@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export default function AboutProperty() {
   return (
-    <section id="aboutus" className="relative overflow-hidden bg-neutral-950 py-20 text-white md:py-28">
+    <section id="aboutus" className="relative overflow-hidden bg-neutral-950 py-12 text-white md:py-16">
       {/* Dynamic Background Glows */}
       <motion.div 
         initial={{ opacity: 0, scale: 0.8 }}

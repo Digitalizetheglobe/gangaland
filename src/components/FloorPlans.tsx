@@ -92,7 +92,7 @@ const FloorPlans = () => {
     }, [isLightboxOpen, currentIdx]);
 
     return (
-        <section id="floor-plans" className="w-full bg-gray-300 py-20 md:py-28 relative overflow-hidden">
+        <section id="floor-plans" className="w-full bg-gray-300 py-12 md:py-16 relative overflow-hidden">
             {/* Background Decorative Elements */}
             <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-[#3A5D8F]/5 blur-[120px] rounded-full pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-[#2354A2]/5 blur-[120px] rounded-full pointer-events-none" />

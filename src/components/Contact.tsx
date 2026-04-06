@@ -16,11 +16,13 @@ export default function Contact() {
     email: "",
     phone: "",
     message: "",
+    consent: false,
   });
   const [errors, setErrors] = useState<{
     name?: string;
     email?: string;
     phone?: string;
+    consent?: string;
   }>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
@@ -29,8 +31,13 @@ export default function Contact() {
   const handleInputChange = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    const { name, value } = event.target;
-    setFormValues((prev) => ({ ...prev, [name]: value }));
+    const { name, value, type } = event.target;
+    const checked = (event.target as HTMLInputElement).checked;
+    
+    setFormValues((prev) => ({ 
+      ...prev, 
+      [name]: type === 'checkbox' ? checked : value 
+    }));
   };
 
   const handleUnitChange = (event: ChangeEvent<HTMLSelectElement>) => {
@@ -47,7 +54,7 @@ export default function Contact() {
   };
 
   const validate = () => {
-    const newErrors: { name?: string; email?: string; phone?: string } = {};
+    const newErrors: { name?: string; email?: string; phone?: string; consent?: string } = {};
 
     if (!formValues.name.trim()) {
       newErrors.name = "Full name is required.";
@@ -65,6 +72,10 @@ export default function Contact() {
       newErrors.email = "Email is required.";
     } else if (!/^\S+@\S+\.\S+$/.test(formValues.email.trim())) {
       newErrors.email = "Please enter a valid email address.";
+    }
+
+    if (!formValues.consent) {
+      newErrors.consent = "You must agree to the privacy policy.";
     }
 
     setErrors(newErrors);
@@ -114,6 +125,7 @@ export default function Contact() {
         email: "",
         phone: "",
         message: "",
+        consent: false,
       });
       setSelectedUnit("");
       setPriceRange("");
@@ -133,7 +145,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative py-16 text-white md:py-28 overflow-hidden" 
+      className="relative py-12 text-white md:py-16 overflow-hidden" 
       style={{
         backgroundImage: "url('/images/gallery (2).png')",
         backgroundSize: "cover",
@@ -379,18 +391,27 @@ export default function Contact() {
                   name="consent"
                   type="checkbox"
                   required
-                  className="mt-0.5 h-4 w-4 cursor-pointer rounded border-white/30 text-[#FFD44F] focus:ring-2 focus:ring-[#FFD44F] focus:ring-offset-0 bg-transparent"
+                  checked={formValues.consent}
+                  onChange={handleInputChange}
+                  className={`mt-0.5 h-4 w-4 cursor-pointer rounded border-white/30 text-[#FFD44F] focus:ring-2 focus:ring-[#FFD44F] focus:ring-offset-0 bg-transparent ${
+                    errors.consent ? "ring-2 ring-red-500" : ""
+                  }`}
                 />
-                <label htmlFor="consent" className="cursor-pointer leading-relaxed">
-                  I agree to the{" "}
-                  <Link href="/privacy-policy" className="font-bold text-[#FFD44F] hover:[#FFD44F]/80">
-                    privacy policy
-                  </Link>{" "}
-                  of{" "}
-                  <span className="font-bold text-white">
-                    {SITE_CONFIG.name}
-                  </span>{" "}
-                </label>
+                <div className="flex flex-col gap-1">
+                  <label htmlFor="consent" className="cursor-pointer leading-relaxed">
+                    I agree to the{" "}
+                    <Link href="/privacy-policy" className="font-bold text-[#FFD44F] hover:[#FFD44F]/80">
+                      privacy policy
+                    </Link>{" "}
+                    of{" "}
+                    <span className="font-bold text-white">
+                      {SITE_CONFIG.name}
+                    </span>{" "}
+                  </label>
+                  {errors.consent && (
+                    <p className="text-[10px] text-red-500 font-medium">{errors.consent}</p>
+                  )}
+                </div>
               </div>
 
               <div className="flex flex-col gap-4 pt-1 md:flex-row md:items-center md:justify-between">

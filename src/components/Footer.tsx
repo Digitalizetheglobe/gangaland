@@ -11,7 +11,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-neutral-950 py-16 text-white md:py-24 relative z-20 pb-20 md:pb-24">
+    <footer className="bg-neutral-950 py-12 text-white md:py-16 relative z-20">
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           {/* Logo and About */}
@@ -142,7 +142,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-16 border-t border-white pt-8 md:mt-8">
+        <div className="mt-8 border-t border-white/20 pt-8 md:mt-12">
           <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
             <p className="text-xs text-white">
               © {currentYear} Ganga Legends. All rights reserved.

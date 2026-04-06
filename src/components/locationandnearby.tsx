@@ -70,7 +70,7 @@ export default function LocationAndNearby() {
   };
 
   return (
-    <section id="location" className="relative w-full overflow-hidden bg-neutral-950 py-20 md:py-28 text-neutral-800 border-t border-gray-400">
+    <section id="location" className="relative w-full overflow-hidden bg-neutral-950 py-12 md:py-16 text-neutral-800 border-t border-gray-400">
       <div className="container mx-auto px-6 md:px-12 lg:px-24">
         
         {/* Header Text */}

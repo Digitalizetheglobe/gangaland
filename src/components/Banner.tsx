@@ -32,7 +32,7 @@ export default function Banner() {
         initial={{ x: -100, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="relative flex w-full md:w-[35%] min-w-0 md:min-w-[360px] max-w-full md:max-w-[600px] flex-col justify-center overflow-hidden bg-[#050509] px-6 py-12 md:px-14 md:py-20 lg:px-20"
+        className="relative flex w-full md:w-[35%] min-w-0 md:min-w-[360px] max-w-full md:max-w-[600px] flex-col justify-center overflow-hidden bg-[#050509] px-6 py-12 md:px-14 md:py-16 lg:px-20"
       >
         {/* Background image */}
         <motion.div
@@ -76,11 +76,11 @@ export default function Banner() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.7, duration: 0.8 }}
-            className="flex flex-wrap items-center gap-5"
+            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-5"
           >
             <button
               onClick={openScheduleModal}
-              className="group flex flex-1 text-xs sm:flex-initial items-center justify-center gap-2.5 rounded-full cursor-pointer bg-[#FFD44F] px-7 py-4 sm:text-sm font-semibold text-black transition hover:bg-[#FFD44F]/60"
+              className="group flex w-full sm:w-auto text-xs sm:text-sm items-center justify-center gap-2.5 rounded-full cursor-pointer bg-[#FFD44F] px-7 py-4 font-semibold text-black transition hover:bg-[#FFD44F]/60"
             >
               Enquire Now
               <svg className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -89,7 +89,7 @@ export default function Banner() {
             </button>
             <button
               onClick={() => setVideoOpen(true)}
-              className="group flex flex-1 text-xs sm:flex-initial items-center justify-center gap-2 cursor-pointer rounded-full bg-white/10 px-7 py-4 sm:text-sm font-semibold text-white transition hover:bg-white/20"
+              className="group flex w-full sm:w-auto text-xs sm:text-sm items-center justify-center gap-2 cursor-pointer rounded-full bg-white/10 px-7 py-4 font-semibold text-white transition hover:bg-white/20"
             >
               <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#FFD44F]">
                 <svg className="h-3 w-3 text-black" fill="currentColor" viewBox="0 0 24 24">

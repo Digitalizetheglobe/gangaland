@@ -28,7 +28,7 @@ export default function Testimonial() {
   const duplicatedTestimonials = [...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS];
 
   return (
-    <section id="testimonials" className="w-full bg-gray-300 py-20 md:py-28 relative z-20 overflow-hidden">
+    <section id="testimonials" className="w-full bg-gray-300 py-12 md:py-16 relative z-20 overflow-hidden">
       <div className="mx-auto max-w-7xl px-6">
         
         <motion.div 

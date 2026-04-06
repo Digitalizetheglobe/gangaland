@@ -35,7 +35,7 @@ export default function Counter() {
 
   return (
     <section
-      className="relative w-full min-h-[400px] py-20 md:py-28 flex items-center justify-center text-white overflow-hidden"
+      className="relative w-full min-h-[400px] py-12 md:py-16 flex items-center justify-center text-white overflow-hidden"
     >
       {/* background image with light tint */}
       <motion.div
@@ -86,7 +86,7 @@ export default function Counter() {
                 className="w-28 h-28 sm:w-32 md:w-36 lg:w-40 lg:h-40 md:h-36 sm:h-32 rounded-full bg-white/30 backdrop-blur-md flex items-center justify-center mb-4 md:mb-5 shadow-lg border border-white/20"
               >
                 <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white">
-                  <CountUp end={item.number} duration={3} enableScrollSpy scrollSpyOnce /><span className="text-xl sm:text-2xl md:text-[30px] my-auto ml-0.5">{item.unit}</span>
+                  <CountUp end={item.number} duration={4} enableScrollSpy scrollSpyOnce /><span className="text-xl sm:text-2xl md:text-[30px] my-auto ml-0.5">{item.unit}</span>
                 </span>
               </motion.div>
 
