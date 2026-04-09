@@ -17,7 +17,7 @@ const ecosystems = [
     description: "7 scientific pillars engineered into every surface and system. A living operating system for your biology.",
     icon: Smartphone,
     img: "/images/concept1.png",
-    video: "https://youtu.be/rk3rZ_rGca4?si=k6yicOWkC4B24aKV",
+    video: "/videos/Sonali.mp4",
     label: "[BIO_DATA_LAYER_01]",
     coords: "48.8566° N, 2.3522° E"
   },
@@ -26,7 +26,7 @@ const ecosystems = [
     description: "TLB App + TLB Ring + Personal Coach for continuous bio-feedback. Real-time health-span optimization.",
     icon: AppWindow,
     img: "/images/concept2.png",
-    video: "https://youtu.be/rk3rZ_rGca4?si=k6yicOWkC4B24aKV",
+    video: "/videos/Sonali.mp4",
     label: "[PERFORMANCE_NEXUS]",
     coords: "34.0522° N, 118.2437° W"
   },
@@ -35,7 +35,7 @@ const ecosystems = [
     description: "Movement culture, nutrition pathways, and community rituals built into the urban fabric.",
     icon: Users,
     img: "/images/concept3.png",
-    video: "https://youtu.be/rk3rZ_rGca4?si=k6yicOWkC4B24aKV",
+    video: "/videos/Sonali.mp4",
     label: "[SOCIAL_CONNECTv2]",
     coords: "51.5074° N, 0.1278° W"
   },
@@ -52,11 +52,7 @@ const TechnicalAnnotation = ({ label, coords, side }: { label: string, coords: s
   </div>
 );
 
-const getYoutubeEmbedUrl = (url: string) => {
-    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-    const match = url.match(regExp);
-    return (match && match[2].length === 11) ? `https://www.youtube.com/embed/${match[2]}?autoplay=1&rel=0&modestbranding=1` : url;
-};
+
 
 const VideoModal = ({ isOpen, onClose, videoSrc }: { isOpen: boolean; onClose: () => void; videoSrc: string }) => {
     const [isLoading, setIsLoading] = useState(true);
@@ -104,25 +100,13 @@ const VideoModal = ({ isOpen, onClose, videoSrc }: { isOpen: boolean; onClose: (
                             )}
                         </AnimatePresence>
 
-                        {videoSrc.includes('youtube.com') || videoSrc.includes('youtu.be') ? (
-                            <iframe
-                                src={getYoutubeEmbedUrl(videoSrc)}
-                                title="YouTube video player"
-                                frameBorder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowFullScreen
-                                onLoad={() => setIsLoading(false)}
-                                className="w-full h-full"
-                            />
-                        ) : (
-                            <video
-                                src={videoSrc}
-                                autoPlay
-                                controls
-                                onLoadedData={() => setIsLoading(false)}
-                                className="w-full h-full object-contain"
-                            />
-                        )}
+                        <video
+                            src={videoSrc}
+                            autoPlay
+                            controls
+                            onLoadedData={() => setIsLoading(false)}
+                            className="w-full h-full object-contain"
+                        />
                         <button
                             onClick={onClose}
                             className="absolute top-6 right-6 z-[1000] p-3 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors backdrop-blur-md"

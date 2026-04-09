@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Image from 'next/image';
-import { ChevronLeft, ChevronRight, Plus, X } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Plus, X, Volume2, VolumeX } from 'lucide-react';
 import { motion, AnimatePresence } from "framer-motion";
 
 const GALLERY_IMAGES = [
@@ -15,6 +15,15 @@ const GALLERY_IMAGES = [
 const GallerySection = () => {
     const [currentIndex, setCurrentIndex] = useState(1);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isMuted, setIsMuted] = useState(true);
+    const videoRef = useRef<HTMLVideoElement>(null);
+
+    const toggleMute = () => {
+        if (videoRef.current) {
+            videoRef.current.muted = !videoRef.current.muted;
+            setIsMuted(videoRef.current.muted);
+        }
+    };
 
     const nextSlide = () => {
         setCurrentIndex((prev) => (prev + 1) % GALLERY_IMAGES.length);
@@ -116,6 +125,33 @@ const GallerySection = () => {
                         <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
                     </button>
                 </div>
+
+                {/* Continuous Play Video */}
+                <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+                    className="mt-12 md:mt-16 rounded-2xl overflow-hidden shadow-2xl mx-auto max-w-[1200px] relative group"
+                >
+                    <video
+                        ref={videoRef}
+                        src="/videos/Sonali.mp4"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="w-full h-[600px] object-cover"
+                    />
+                    {/* Mute/Unmute Toggle */}
+                    <button
+                        onClick={toggleMute}
+                        className="absolute bottom-4 right-4 z-10 flex items-center gap-2 bg-black/60 hover:bg-black/80 text-white px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-widest backdrop-blur-sm transition-all duration-300"
+                    >
+                        {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+                        {isMuted ? 'Unmute' : 'Mute'}
+                    </button>
+                </motion.div>
             </div>
 
             {/* Modal */}

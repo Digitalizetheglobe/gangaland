@@ -35,7 +35,7 @@ export default function Header() {
           >
             <div className="flex items-center justify-between mb-12">
               <div className="flex items-center gap-4">
-                <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>
+                <Link href="/#home" onClick={() => setIsMobileMenuOpen(false)}>
                   <Image src="/images/logo.png" alt="Logo" width={100} height={40} className="h-8 w-auto" />
                 </Link>
                 <div className="h-6 w-px bg-black/10" />
@@ -80,7 +80,7 @@ export default function Header() {
           : "w-full max-w-[1400px] bg-white/60 py-4 px-8 rounded-full border border-white/20 shadow-2xl backdrop-blur-md"
           }`}>
           <div className="flex items-center gap-4 shrink-0">
-            <Link href="/" className="shrink-0">
+            <Link href="/#home" className="shrink-0">
               <Image
                 src="/images/logo.png"
                 alt="Ganga Legend Logo"
@@ -94,8 +94,8 @@ export default function Header() {
               href="#"
               className="flex flex-col justify-center"
             >
-              <span className="font-raleway text-[14px] font-black uppercase tracking-[0.05em] leading-none text-[#000000]">The Living</span>
-              <span className="font-raleway text-[14px] font-black uppercase tracking-[0.05em] leading-none mt-1 text-[#000000]">Blueprint</span>
+              <span className="font-raleway text-[17px] font-bold tracking-[-.022em] leading-none text-[#1d1d1f]">The Living</span>
+              <span className="font-raleway text-[17px] font-bold tracking-[-.022em] leading-none mt-1 text-[#1d1d1f]">Blueprint</span>
             </Link>
           </div>
 

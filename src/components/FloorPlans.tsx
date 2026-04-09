@@ -146,15 +146,48 @@ const FloorPlans = () => {
 
                 {/* Tabs */}
                 <div className="relative mb-12">
-                    <div className="grid grid-cols-4 md:flex md:flex-wrap justify-center gap-2 md:gap-4">
+                    {/* Mobile: two rows — 4 tabs then 3 centered */}
+                    <div className="md:hidden space-y-2">
+                        <div className="grid grid-cols-4 gap-2">
+                            {FLOOR_PLANS.slice(0, 4).map((plan) => (
+                                <button
+                                    key={plan.id}
+                                    onClick={() => setActiveTab(plan.id)}
+                                    className={`px-1 py-3 rounded-xl font-raleway font-semibold cursor-pointer transition-all duration-300 border text-[9px] sm:text-xs whitespace-nowrap tracking-tighter ${activeTab === plan.id
+                                        ? 'bg-[#12394C] border-[#12394C] text-white shadow-lg'
+                                        : 'bg-white/50 border-gray-400 text-neutral-600 hover:border-[#3A5D8F] hover:text-[#3A5D8F]'
+                                    }`}
+                                >
+                                    {plan.type}
+                                </button>
+                            ))}
+                        </div>
+                        <div className="flex justify-center gap-2">
+                            {FLOOR_PLANS.slice(4).map((plan) => (
+                                <button
+                                    key={plan.id}
+                                    onClick={() => setActiveTab(plan.id)}
+                                    className={`px-1 py-3 rounded-xl font-raleway font-semibold cursor-pointer transition-all duration-300 border text-[9px] sm:text-xs whitespace-nowrap tracking-tighter w-[calc(25%+0.25rem)] ${activeTab === plan.id
+                                        ? 'bg-[#12394C] border-[#12394C] text-white shadow-lg'
+                                        : 'bg-white/50 border-gray-400 text-neutral-600 hover:border-[#3A5D8F] hover:text-[#3A5D8F]'
+                                    }`}
+                                >
+                                    {plan.type}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Desktop: original flex-wrap layout */}
+                    <div className="hidden md:flex md:flex-wrap justify-center gap-4">
                         {FLOOR_PLANS.map((plan) => (
                             <button
                                 key={plan.id}
                                 onClick={() => setActiveTab(plan.id)}
-                                className={`px-1 md:px-8 py-3 rounded-xl md:rounded-full font-raleway font-semibold cursor-pointer transition-all duration-300 border text-[9px] sm:text-xs md:text-sm whitespace-nowrap tracking-tighter md:tracking-normal ${activeTab === plan.id
-                                    ? 'bg-[#12394C] border-[#12394C] text-white shadow-lg transform md:scale-105'
+                                className={`px-8 py-3 rounded-full font-raleway font-semibold cursor-pointer transition-all duration-300 border text-sm whitespace-nowrap ${activeTab === plan.id
+                                    ? 'bg-[#12394C] border-[#12394C] text-white shadow-lg transform scale-105'
                                     : 'bg-white/50 border-gray-400 text-neutral-600 hover:border-[#3A5D8F] hover:text-[#3A5D8F]'
-                                    }`}
+                                }`}
                             >
                                 {plan.type}
                             </button>
