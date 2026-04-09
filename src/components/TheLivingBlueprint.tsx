@@ -40,7 +40,7 @@ const pillars = [
         title: "Nature Architecture",
         description: "10,000 sq ft mini-farm, 150+ native species, hydroponic balconies, sensory gardens, barefoot trails.",
         icon: Leaf,
-        video: "/videos/nature.mp4",
+        video: "/videos/Nature-video.mp4",
     },
     {
         title: "Health-Span Center",
