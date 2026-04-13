@@ -5,6 +5,7 @@ import { Phone, MessageCircle, Info, ArrowUp } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { useScheduleModal } from "@/context/ModalContext";
+import { SITE_CONFIG } from "@/constants/siteConfig";
 
 export default function FixedButtons() {
   const [showBackToTop, setShowBackToTop] = useState(false);
@@ -28,7 +29,7 @@ export default function FixedButtons() {
       {/* Left side buttons */}
       <div className="fixed left-0 bottom-[15%] md:bottom-6 z-50 flex -translate-y-1/2 flex-col gap-2">
         <Link
-          href="https://wa.me/+917026967026"
+          href={`https://wa.me/${SITE_CONFIG.contact.phone.replace(/\s+/g, '')}`}
           target="_blank"
           rel="noopener noreferrer"
           className="group flex w-10 md:w-12 items-center justify-start overflow-hidden rounded-r-lg bg-green-500 p-2 text-white shadow-lg transition-all duration-300 md:hover:w-36"
@@ -59,7 +60,7 @@ export default function FixedButtons() {
       {/* Right side buttons */}
       <div className="fixed right-0 bottom-[25%] md:bottom-26 z-50 flex -translate-y-1/2 flex-col gap-2">
         <Link
-          href="tel:+91 7026967026"
+          href={`tel:${SITE_CONFIG.contact.phone}`}
           className="group flex w-10 md:w-12 flex-row-reverse items-center justify-start overflow-hidden rounded-l-lg bg-[#FFD44F] p-2.5 md:p-3 text-black shadow-lg transition-all duration-300 md:hover:w-32"
         >
           <Phone className="h-6 w-6 shrink-0" />

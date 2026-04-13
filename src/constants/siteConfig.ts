@@ -5,7 +5,7 @@ export const SITE_CONFIG: SiteConfig = {
   description: "Modern Space And Premium Of Apartment.",
   address: "Ganga Legends County, 18m. D.P. Road, Ram Nagar, Bavdhan, Off. Pashan, Pune.",
   contact: {
-    phone: "+91 7026967026",
+    phone: "+91 9764880458",
     email: "bullseyepropsol@gmail.com",
   },
   socials: [
