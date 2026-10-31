@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, Loader2, CheckCircle2, AlertCircle } from "lucide-react";
 import emailjs from "@emailjs/browser";
 import { EMAILJS_CONFIG } from "@/constants/emailjs";
+import { submitToGoogleSheet } from "@/services/googleSheet";
 
 export default function Contact() {
   const [selectedUnit, setSelectedUnit] = useState("");
@@ -103,12 +104,23 @@ export default function Contact() {
         }),
       };
 
-      await emailjs.send(
-        EMAILJS_CONFIG.SERVICE_ID,
-        EMAILJS_CONFIG.TEMPLATE_ID,
-        templateParams,
-        EMAILJS_CONFIG.PUBLIC_KEY
-      );
+      // Send to both EmailJS and Google Sheets
+      await Promise.allSettled([
+        emailjs.send(
+          EMAILJS_CONFIG.SERVICE_ID,
+          EMAILJS_CONFIG.TEMPLATE_ID,
+          templateParams,
+          EMAILJS_CONFIG.PUBLIC_KEY
+        ).catch((err) => console.error("EmailJS Error:", err)),
+        submitToGoogleSheet({
+          name: formValues.name,
+          email: formValues.email,
+          phone: formValues.phone,
+          unit: selectedUnit || "Not Specified",
+          message: formValues.message,
+          timestamp: templateParams.time,
+        }),
+      ]);
 
       setSubmittedData({ 
         ...formValues, 

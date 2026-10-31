@@ -115,7 +115,7 @@ export default function Header() {
           <div className="flex items-center gap-4">
             <button
               onClick={openScheduleModal}
-              className={`hidden md:block rounded-full font-bold uppercase tracking-widest transition-all duration-300 whitespace-nowrap shadow-lg ${isScrolled
+              className={`hidden md:block rounded-full cursor-pointer font-bold uppercase tracking-widest transition-all duration-300 whitespace-nowrap shadow-lg ${isScrolled
                 ? "bg-[#12394C] text-white px-8 py-4 text-[12px] hover:bg-[#3A5D8F]"
                 : "bg-[#FFD44F] text-neutral-900 px-6 py-3 text-[11px] hover:bg-[#FFD44F]/80 shadow-[#FFD44F]/20"
                 }`}
@@ -124,7 +124,7 @@ export default function Header() {
             </button>
             <button
               onClick={() => setIsMobileMenuOpen(true)}
-              className="block md:hidden text-black hover:opacity-70 transition-opacity"
+              className="block md:hidden text-black hover:opacity-70 cursor-pointer transition-opacity"
             >
               <Menu size={24} />
             </button>

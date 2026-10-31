@@ -7,6 +7,7 @@ import { X, Loader2, CheckCircle2, AlertCircle } from "lucide-react"
 import { SITE_CONFIG } from "@/constants/siteConfig"
 import emailjs from "@emailjs/browser"
 import { EMAILJS_CONFIG } from "@/constants/emailjs"
+import { submitToGoogleSheet } from "@/services/googleSheet"
 
 interface ScheduleModalContextType {
   openScheduleModal: () => void
@@ -69,12 +70,23 @@ export function ScheduleModalProvider({ children }: { children: ReactNode }) {
         }),
       };
 
-      await emailjs.send(
-        EMAILJS_CONFIG.SERVICE_ID,
-        EMAILJS_CONFIG.TEMPLATE_ID,
-        templateParams,
-        EMAILJS_CONFIG.PUBLIC_KEY
-      );
+      // Send to both EmailJS and Google Sheets
+      await Promise.allSettled([
+        emailjs.send(
+          EMAILJS_CONFIG.SERVICE_ID,
+          EMAILJS_CONFIG.TEMPLATE_ID,
+          templateParams,
+          EMAILJS_CONFIG.PUBLIC_KEY
+        ).catch((err) => console.error("EmailJS Error:", err)),
+        submitToGoogleSheet({
+          name: formValues.name,
+          email: formValues.email,
+          phone: formValues.phone,
+          unit: formValues.unit || "Not Specified",
+          message: formValues.message,
+          timestamp: templateParams.time,
+        }),
+      ]);
 
       setSubmitStatus("success")
       setFormValues({ name: "", email: "", phone: "", unit: "", message: "" })
